@@ -1,5 +1,4 @@
-# -string-matching
-
+# String Matching Project
 Principles and Paradigms of Programming Project.
 
 
@@ -21,7 +20,8 @@ cd C:/Path/To/File/A3-StringMatching
 ```
 # Running the programs.
 
-*#CSharp Files*
+## CSharp Files
+
 The CSharp file once compiled using the terminal will create an executable *.exe* file. To run the respective CSharp programs, simply enter the command on your terminal
 ```
 CSharpProgram.exe
