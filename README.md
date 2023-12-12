@@ -1,15 +1,15 @@
-Boyer-Moore String Matching Project
+# Boyer-Moore String Matching Project
 
-Introduction
+# Introduction
 This project implements the Boyer-Moore algorithm for string matching, demonstrating its efficiency and effectiveness in text search. The implementation is provided in both Python and C# to showcase the algorithm's application in different programming environments.
 
-Team Members
+# Team Members
 
 Elmuntserbalah Taher: Focus on Python implementation, algorithm optimization , Documentation.
 
 David Isaac: Specialized in C# implementation, testing, algorithm optimization and documentation.
 
-Running the Project
+# Running the Project
 
 
 Python:
@@ -24,25 +24,6 @@ C#:
 =1 Navigate to the C# project folder: cd [C# project folder]
 
 -2 Build and run the project: dotnet run
-
-Input Examples
- in python: 
- 
-
-
-Reviewing and Evaluating the Project
-Guidelines for Reviewers
-Focus on the following aspects:
-
-Algorithm Implementation: Correctness and efficiency of the Boyer-Moore algorithm.
-Language-Specific Features: Effective use of Python and C# features.
-Code Quality: Readability, comments, and organization.
-Comparative Analysis: Comparison between Python and C# implementations in terms of performance.
-Evaluation Criteria
-Execution Speed: Time taken for various string and pattern lengths.
-Memory Usage: Efficient use of resources.
-Cross-Language Functionality: Consistency in results between Python and C# versions.
-
 
 
 **How to Clone the Repository**
@@ -61,7 +42,7 @@ Once you've cloned the folder, change your terminal's directory to the path of w
 ```
 cd C:/Path/To/File/A3-StringMatching
 ```
-# Running the programs.
+
 
 ## CSharp Files
 
@@ -74,9 +55,50 @@ If you're using a built-in terminal like VSCode's Terminal, you may have to run 
 ./CSharpProgram.exe
 ```
 
+# Reviewing and Evaluating the Project
+Guidelines for Reviewers
+Focus on the following aspects:
 
-Contact
+Algorithm Implementation: Correctness and efficiency of the Boyer-Moore algorithm.
+
+Language-Specific Features: Effective use of Python and C# features.
+
+Code Quality: Readability, comments, and organization.
+
+Comparative Analysis: Comparison between Python and C# implementations in terms of performance.
+
+
+Evaluation Criteria
+
+Execution Speed: Time taken for various string and pattern lengths.
+
+
+Resource Usage:
+
+CPU usage: Efficient use of resources like optimizing performance
+
+Memory Usage: Efficient use of resources.
+
+Cross-Language Functionality: Consistency in results between Python and C# versions.
+
+# Input Examples
+
+Example (1) 
+
+text = "AABAACAADAABAAABAAAABABBABABAAABBBBAAABABAAABBBABAAABABBAABABBAABABA"
+
+    pattern = "AABA"
+
+Example (2) 
+
+text = "KEOLCOLALLOCOLAKELEKCOLACOCCOCOLACOLAAAOLOCOALCOLAOCLOACOLAALOOCLCOLAKE"
+
+    pattern = "COLA"
+    
+# Contact
+
 For any queries or contributions, please reach out to:
 
 Elmuntserbalah Taher: [moanta.taher.22@um.edu.mt]
+
 David Isaac: []
