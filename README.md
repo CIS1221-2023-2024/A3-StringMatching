@@ -1,23 +1,29 @@
-
-Certainly! Here's a tailored README template for your string matching project using the Boyer-Moore algorithm, implemented in Python and C#.
-
 Boyer-Moore String Matching Project
+
 Introduction
 This project implements the Boyer-Moore algorithm for string matching, demonstrating its efficiency and effectiveness in text search. The implementation is provided in both Python and C# to showcase the algorithm's application in different programming environments.
 
 Team Members
+
 Elmuntserbalah Taher: Focus on Python implementation, algorithm optimization , Documentation.
+
 David Isaac: Specialized in C# implementation, testing, algorithm optimization and documentation.
 
 Running the Project
+
+
 Python:
 
-1- Navigate to the Python source folder: cd [Python source folder]
-2- Run the script: python boyer_moore.py
+=1 Navigate to the Python source folder: cd [Python source folder]
+
+=2 Run the script: python boyer_moore.py
+
+
 C#:
 
-1- Navigate to the C# project folder: cd [C# project folder]
-2- Build and run the project: dotnet run
+=1 Navigate to the C# project folder: cd [C# project folder]
+
+-2 Build and run the project: dotnet run
 
 Input Examples
  in python: 
