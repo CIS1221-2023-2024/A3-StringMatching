@@ -101,4 +101,4 @@ For any queries or contributions, please reach out to:
 
 Elmuntserbalah Taher: [moanta.taher.22@um.edu.mt]
 
-David Isaac: []
+David Isaac: [david.i.ohayon.23@um.edu.mt]
