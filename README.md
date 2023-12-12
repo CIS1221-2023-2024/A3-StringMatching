@@ -14,14 +14,14 @@ David Isaac: Specialized in C# implementation, testing, algorithm optimization a
 
 Python:
 
-=1 Navigate to the Python source folder: cd [Python source folder]
+-1 Navigate to the Python source folder: cd [Python source folder]
 
 =2 Run the script: python boyer_moore.py
 
 
 C#:
 
-=1 Navigate to the C# project folder: cd [C# project folder]
+-1 Navigate to the C# project folder: cd [C# project folder]
 
 -2 Build and run the project: dotnet run
 
