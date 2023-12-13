@@ -27,14 +27,38 @@ The Bad Match table is used in order to assign each specific letter within the p
 The purpose of this value is to simply allow the algorithm to skip an amount of letters with the **"Impression"** that the pattern we wish to find is no where
 near the current index it is pointing at. 
 
-The Bad Match Table contains all these values for each leter in the pattern, and is calculated by the following:
 
-### **LetterValue = max(1, (patternLength - indexOfLetter - 1))**
 
 
 ![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/46d4a862-9485-4612-a7cc-2944824f3c13)
 
+The Bad Match Table contains all these values for each leter in the pattern, and is calculated by the following:
+### **LetterValue = max(1, (patternLength - indexOfLetter - 1))**
+
 ![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/e816d862-56c8-4a64-bb08-69355ef1e1fa)
+
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/6f20ea6f-584c-494c-93e5-32a45aeb7ac5)
+
+Then of course, Any character in the long string that is not an existing character in the pattern will have the value **equivalent to the pattern's length**
+
+### **So..What's actually happening during the Boyer Moore String Algorithm search when it comes to the Bad Character Heuristic?**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
