@@ -19,6 +19,10 @@ The Boyer-Moore algorithm hinges on two pivotal heuristics: the Bad Character He
 # Bad Character Heuristic:
 Quickly identifies and skips to the next mismatched character in the text, thus saving time by avoiding exhaustive comparisons.
 
+This is achieved by the use of a **Bad Match Table**.
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/2e867f9c-ff83-4619-9319-63611cb45dc6)
+
+
 it operates by:
 
 - Scanning from right to left in the pattern.
