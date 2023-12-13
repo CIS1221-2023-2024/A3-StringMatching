@@ -1,4 +1,4 @@
-**By David Isaac Ohayon & Montaser Taher**
+**By David Isaac Ohayon & Elmuntserbalah Taher**
 
 This project will be covering the “String Matching” Algorithm. This will be documented with all the information and instructions of operation and decision making for tackling said algorithm. As well as a well-detailed explanation of the paradigms and methods used.
 
