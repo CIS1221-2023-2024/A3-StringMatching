@@ -47,6 +47,10 @@ Then of course, Any character in the long string that is not an existing charact
 
 
 
+https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/3766d8d2-3452-422e-a6d0-279bec3f00db
+
+
+
 
 
 
@@ -66,7 +70,7 @@ it operates by:
 
 - Scanning from right to left in the pattern.
 
-- Using a precomputed table to identify the last occurrence of each character in the pattern.
+- Using our precomputed table to identify the last occurrence of each character in the pattern.
 
 When a character mismatch occurs with a character 'X' in the text, shifting the pattern based on the table's information:
 If 'X' is not in the pattern, shift the pattern by its full length.
