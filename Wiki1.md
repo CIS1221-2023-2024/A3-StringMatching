@@ -10,22 +10,16 @@ Logically, a string-matching algorithm works by searching through a long string 
 ## **Existing Solutions to a string matching algorithm**
 There are several existing algorithms that tackle a string matching system. They all vary in their complexity and efficiency. Such existing algorithms go by the name of **Brute Force Algorithm (Or Naive-Algorithm)** , **KMP - Knuth Morris Algorithm**, **Boyer-Moore Algorithm**.
 
-## Brute Force Algorithm (Naive-Algorithm)
-The Naive-Algorithm, or more appropriately, Brute Force algorithm, goes by it's name. The way this algorithm works is that it simply takes in a long string of text, this can be a sequence of letter patterns such as "AAABABABAAACCEDAAAA", and will attempt to iterate through each letter from left to right, and tries to compare each letter after the selected letter, with each letter of the pattern.
+# The Boyer Moore Algorithm
 
-Logically speaking this can be defined by taking a first letter from the long string at index N. Upon selecting this first letter, a second inner iteration of each letters in the pattern will be run, starting from index J. If the first letters of both the string and the pattern match, the algorithm will move on to the next Nth letter of the text, in which case. N + 1, and then compare it to the next letter of the pattern, J + 1.
+As a student navigating the realm of algorithms, we introduce you to the Boyer-Moore algorithm, a remarkable tool in string searching and pattern matching. Developed by Robert S. Boyer and J. Strother Moore, this algorithm has revolutionized the field with its efficiency.
 
-This cycle will repeat for each letter in the long string until a full match is made.
+The Boyer-Moore algorithm hinges on two pivotal heuristics: the Bad Character Heuristic and the Good Suffix Heuristic. These heuristics work in tandem to streamline pattern matching and reduce character comparisons.
 
-![image](https://github.com/Montaser-Taher/-string-matching/assets/147913714/4f231d52-edbf-4ff3-830f-237474e7d62a)
+Bad Character Heuristic:
+Quickly identifies and skips to the next mismatched character in the text, thus saving time by avoiding exhaustive comparisons.
 
+Good Suffix Heuristic:
+Discerns matching segments on the right side of a mismatch, optimizing pattern alignment and minimizing character comparisons.
 
-
-
-For this project, we will be proceeding with the Boyer-Moore Algorithm, given that it integrates a part of both the Naive-Algorithm and Knuth Morris Algorithm, and it happens to be the most efficient solution as a string matching algorithm. This of course comes with a greater complexity in its code structure.
-
-
-## Knuth-Morris-Pratt - (KMP) Algorithm
-The KMP Algorithm has a similar approach to the brute force algorithm, though a bit more complex & efficient.
-
-The algorithm takes in a long string, as mentioned (e.g: **AAAABACAGATACAAA** ) and a pattern to search for within (e.g: **BACAGA**)
+These heuristics make Boyer-Moore a go-to choice for efficient text searching in large documents. In this exploration, we'll delve deeper into how these heuristics drive the algorithm's effectiveness, shedding light on its elegance and significance in computer science. Join us on this journey into the Boyer-Moore algorithm and its ingenious heuristics!
