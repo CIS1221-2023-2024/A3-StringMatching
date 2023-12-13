@@ -68,7 +68,16 @@ def boyer_moore(text, pattern):
 end= time.time()
 
 if __name__ == "__main__":
-    text = "AABAACAADAABAAABAAAABABBABABAAABBBBAAABABAAABBBABAAABABBAABABBAABABA"
-    pattern = "AABA"
-    boyer_moore(text, pattern)
+
+    text= input('input a text ')
+    pattern = input('input a Patter to be found withn the text ')
+
+    if not text:
+        print("You didn't input any text.")
+    elif not pattern:
+        print("You didn't input any pattern.")
+    else:
+        boyer_moore(text, pattern)
+
+
     print(end-start)
