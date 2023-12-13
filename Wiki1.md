@@ -16,10 +16,10 @@ As a student navigating the realm of algorithms, we introduce you to the Boyer-M
 
 The Boyer-Moore algorithm hinges on two pivotal heuristics: the Bad Character Heuristic and the Good Suffix Heuristic. These heuristics work in tandem to streamline pattern matching and reduce character comparisons.
 
-Bad Character Heuristic:
+# Bad Character Heuristic:
 Quickly identifies and skips to the next mismatched character in the text, thus saving time by avoiding exhaustive comparisons.
 
-Good Suffix Heuristic:
+# Good Suffix Heuristic:
 Discerns matching segments on the right side of a mismatch, optimizing pattern alignment and minimizing character comparisons.
 
 These heuristics make Boyer-Moore a go-to choice for efficient text searching in large documents. In this exploration, we'll delve deeper into how these heuristics drive the algorithm's effectiveness, shedding light on its elegance and significance in computer science. Join us on this journey into the Boyer-Moore algorithm and its ingenious heuristics!
