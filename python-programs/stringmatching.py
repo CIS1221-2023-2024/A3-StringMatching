@@ -13,7 +13,7 @@ def bad_character_table(pattern):
 
 
 # This Function to check if a substring is a prefix of the pattern
-
+m
 def is_prefix(pattern, p):
     pattern_length = len(pattern)
     #  the purpose is to know how long a part of a word is.
@@ -143,6 +143,6 @@ if __name__ == "__main__":
 
         if found_indices:
             print("Pattern found at indices:", found_indices)
-            
+
         if not found_indices:
             print('Pattern is not matching in the text')
