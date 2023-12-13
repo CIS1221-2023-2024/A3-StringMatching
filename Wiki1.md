@@ -7,7 +7,7 @@ Logically, a string-matching algorithm works by searching through a long string 
 
 ![image](https://github.com/Montaser-Taher/-string-matching/assets/147913714/749d96ed-25c3-418f-9e08-f9c230aaa43b)
 
-## ** Existing Solutions to a string matching algorithm **
+## **Existing Solutions to a string matching algorithm**
 There are several existing algorithms that tackle a string matching system. They all vary in their complexity and efficiency. Such existing algorithms go by the name of **Brute Force Algorithm (Or Naive-Algorithm)** , **KMP - Knuth Morris Algorithm**, **Boyer-Moore Algorithm**.
 
 ## Brute Force Algorithm (Naive-Algorithm)
