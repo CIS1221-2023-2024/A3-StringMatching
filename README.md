@@ -1,7 +1,7 @@
 # Boyer-Moore String Matching Project
 
 # For The Wiki Page:
-[a relative link](Wiki1.md)
+[Wikipage](Wiki1.md)
 
 # Introduction
 This project implements the Boyer-Moore algorithm for string matching, demonstrating its efficiency and effectiveness in text search. The implementation is provided in both Python and C# to showcase the algorithm's application in different programming environments.
