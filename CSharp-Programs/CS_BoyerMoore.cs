@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
  
 
 
@@ -51,52 +52,174 @@ namespace BoyerMoore{
             //     Console.WriteLine(entry.Key + " : " + entry.Value);
             // }
 
+            // More Efficient Search
 
 
-            // Requires Fixing for actual Boyer-Moore comparison.
-            int iter = pLength - 1;
-            int patIndex = pLength - 1;
-
-            while(iter <= tLength - 1){
-                Console.WriteLine("Comparing : " + text[iter] + " with " + pattern[patIndex] + " At index " + iter);
-                if(text[iter] == pattern[patIndex]){
-                       Console.WriteLine("Match Found, Entering For Loop Iteration");
-                       int a = iter;
-                       for(int k = 0 ; k < patIndex; k++){
-                         Console.WriteLine("Comparing : " + text[a - k] + " with " + pattern[patIndex - k] + " At index " + (a - k));
-                         if(text[a - k] != pattern[patIndex - k]){
-                            if(badMatchTable.ContainsKey(text[a-k].ToString())){
-                                iter = iter + badMatchTable[text[a-k].ToString()];
-                            }else{
-                                iter = iter + badMatchTable["*"];
-                            }
-                         }
-
-                         if(a == 0){
-                            Console.WriteLine("Match found at index " + iter);
-                         }
+            int index = pLength - 1;
+            int lastElement = pattern.Length - 1;
 
 
-                       }
+            while(index < tLength){
+                // Console.WriteLine(" --- Running Outer Iteration with index value " + index);
+                
+                // Console.WriteLine("Comparing " + text[index] + " With " + pattern[lastElement]);
+                
+                if(text[index] == pattern[lastElement]){
+                    // Console.WriteLine("Match found ");
+                    int l = lastElement;
+                    int k = index;
 
+                    while(l > 0){
+                        // Console.WriteLine("---- Inner Iteration");
+                        // Console.WriteLine("Comparing " + text[k] + " with " + pattern[l]);
+                        
+                        if(text[k] != pattern[l]){
+                            // Console.WriteLine("No Match Found " + text[k]);
+                           if(badMatchTable.ContainsKey(text[k].ToString())){
+                               index = index + badMatchTable["*"];
+                               break;
+                           }else{
+                            // Console.WriteLine("Match Found " + text[k]);
+                              index = index + badMatchTable[text[k].ToString()];
+                              break;
+                           }
+                        }else{
+                            l--;
+                            k--;
+                        }
+                        if(l == 0){
+                            Console.WriteLine("Match found at : " + (index - (pLength - 1)));
+                            index++;
+                        }
 
-
-
+                    }
                 }else{
-                    Console.WriteLine("No Match Found");
-                    if(badMatchTable.ContainsKey(text[iter].ToString())){
-                        Console.WriteLine("Key is not in dictionary");
-                        iter = iter + badMatchTable["*"];
-                        Console.WriteLine("This ran well");
-                        Console.WriteLine("New Value of Iter " + iter);
+                    // Console.WriteLine(" --- No Outer Match");
+                    if(badMatchTable.ContainsKey(text[index].ToString())){
+                        
+                        // Console.WriteLine(" Word " + text[index] +  " is a key in dictionary, giving new value to index");
+                        index = index + badMatchTable[text[index].ToString()];
+                        Console.WriteLine(index);
+  
                     }else{
-                        Console.WriteLine("Key is in dictionary");
-                        iter = iter + badMatchTable[text[patIndex].ToString()];
-                        Console.WriteLine("This ran well");
-                        Console.WriteLine("New Value of Iter " + iter);
+                        // Console.WriteLine(" Word " + text[index] +  " is not a key in dictionary, giving new value to index");
+                        index = index + badMatchTable["*"];
+                        Console.WriteLine(index);
+  
                     }
                 }
             }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // int pIndex = pLength - 1; // Start at index equal to last element of pattern 
+            // int index = pLength - 1; // Start in long text at the nth element of pattern.
+             
+
+            // while(index < tLength){
+            //     string tempString = text.Substring((index - pIndex), (index));
+                
+            //     Console.WriteLine("Your string " + tempString);
+
+            
+            //     for(int i = 0; i < pLength ; i++){
+            //         Console.WriteLine("Iteration " + i);
+            //         Console.WriteLine(" current Char Index : " + (index - 1 ) + " current Pattern Char Index " + (pIndex - i));
+            //         string curChar = tempString[index + i].ToString();
+            //         Console.WriteLine("Iteration First: " + curChar);
+            //         string curPatChar = pattern[pIndex - i].ToString();
+            //         Console.WriteLine("Iteration Second : " + curPatChar);
+
+
+            //        if(curChar != curPatChar){
+            //           if(badMatchTable.ContainsKey(curChar)){
+            //              index = index + badMatchTable[curChar];
+            //           }else{
+            //              index = index + badMatchTable["*"];
+            //           }
+            //        }else if (i == pLength - 1){
+                       
+            //        }
+            //     }
+            // }
+
+
+
+
+             
+
+
+
+
+
+
+
+            // Requires Fixing for actual Boyer-Moore comparison.
+            // int iter = pLength - 1;
+            // int patIndex = pLength - 1;
+
+            // while(iter <= tLength - 1){
+            //     Console.WriteLine("Comparing : " + text[iter] + " with " + pattern[patIndex] + " At index " + iter);
+
+
+            //     if(text[iter] == pattern[patIndex]){
+            //            Console.WriteLine("Match Found, Entering For Loop Iteration");
+            //            int a = iter;
+
+            //            for(int k = 0 ; k < patIndex; k++){
+            //              Console.WriteLine("Comparing : " + text[a - k] + " with " + pattern[patIndex - k] + " At index " + (a - k));
+
+            //              if(text[a - k] != pattern[patIndex - k]){
+            //                 Console.WriteLine("No Match");
+
+            //                 if(badMatchTable.ContainsKey(text[a-k].ToString())){
+                                
+            //                     iter = iter + badMatchTable[text[a-k].ToString()];
+            //                 }else{
+            //                     iter = iter + badMatchTable["*"];
+            //                 }
+            //                 break;
+            //              }else{
+
+            //              }
+
+            //              if(a == 0){
+            //                 Console.WriteLine("Match found at index " + iter);
+            //                 iter++;
+            //                 break;
+            //              }
+            //            }
+            //     }else{
+            //         Console.WriteLine("No Match Found");
+            //         if(badMatchTable.ContainsKey(text[iter].ToString())){
+            //             Console.WriteLine("Key is not in dictionary");
+            //             iter = iter + badMatchTable["*"];
+            //             Console.WriteLine("This ran well");
+            //             Console.WriteLine("New Value of Iter " + iter);
+            //         }else{
+            //             Console.WriteLine("Key is in dictionary");
+            //             iter = iter + badMatchTable[text[patIndex].ToString()];
+            //             Console.WriteLine("This ran well");
+            //             Console.WriteLine("New Value of Iter " + iter);
+            //         }
+            //     }
+            // }
 
 
 
