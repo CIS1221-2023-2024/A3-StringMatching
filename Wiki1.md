@@ -32,7 +32,7 @@ The Bad Match Table contains all these values for each leter in the pattern, and
 ### **LetterValue = max(1, (patternLength - indexOfLetter - 1))**
 
 
-![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/2e867f9c-ff83-4619-9319-63611cb45dc6)
+
 ![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/e816d862-56c8-4a64-bb08-69355ef1e1fa)
 
 
