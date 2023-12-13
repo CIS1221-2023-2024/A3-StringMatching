@@ -19,6 +19,18 @@ The Boyer-Moore algorithm hinges on two pivotal heuristics: the Bad Character He
 # Bad Character Heuristic:
 Quickly identifies and skips to the next mismatched character in the text, thus saving time by avoiding exhaustive comparisons.
 
+it operates by:
+
+- Scanning from right to left in the pattern.
+
+- Using a precomputed table to identify the last occurrence of each character in the pattern.
+
+When a character mismatch occurs with a character 'X' in the text, shifting the pattern based on the table's information:
+If 'X' is not in the pattern, shift the pattern by its full length.
+If 'X' appears in the pattern, align the rightmost occurrence of 'X' with the mismatched 'X' in the text.
+
+The Bad Character Heuristic's smart handling of character mismatches, making  its status as a core tool for pattern matching and string searches.
+
 # Good Suffix Heuristic:
 Discerns matching segments on the right side of a mismatch, optimizing pattern alignment and minimizing character comparisons.
 
