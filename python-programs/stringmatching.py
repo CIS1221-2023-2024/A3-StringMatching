@@ -1,3 +1,6 @@
+import time
+start= time.time()
+
 def bad_character_table(pattern):
     table = {}
     pattern_length = len(pattern)
@@ -62,8 +65,19 @@ def boyer_moore(text, pattern):
             bad_char_shift = bad_char_table.get(text[i + j], -1)
             good_suffix_shift = suffix_table[j]
             i += max(bad_char_shift, good_suffix_shift)
+end= time.time()
 
 if __name__ == "__main__":
-    text = "AABAACAADAABAAABAAAABABBABABAAABBBBAAABABAAABBBABAAABABBAABABBAABABA"
-    pattern = "AABA"
-    boyer_moore(text, pattern)
+
+    text= input('input a text ')
+    pattern = input('input a Patter to be found withn the text ')
+
+    if not text:
+        print("You didn't input any text.")
+    elif not pattern:
+        print("You didn't input any pattern.")
+    else:
+        boyer_moore(text, pattern)
+
+
+    print(end-start)
