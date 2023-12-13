@@ -21,7 +21,7 @@ Quickly identifies and skips to the next mismatched character in the text, thus 
 
 This is achieved by the use of a **Bad Match Table**.
 
-### **How the Bad Match Table is Created**
+## **How the Bad Match Table is Created**
 
 The Bad Match table is used in order to assign each specific letter within the pattern that we wish to find in our long string, a calculated value.
 The purpose of this value is to simply allow the algorithm to skip an amount of letters with the **"Impression"** that the pattern we wish to find is no where
@@ -29,7 +29,7 @@ near the current index it is pointing at.
 
 The Bad Match Table contains all these values for each leter in the pattern, and is calculated by the following:
 
-### **LetterValue = max(1, (patternLength - indexOfLetter - 1))
+### **LetterValue = max(1, (patternLength - indexOfLetter - 1))**
 
 
 ![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/2e867f9c-ff83-4619-9319-63611cb45dc6)
