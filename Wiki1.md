@@ -39,3 +39,12 @@ The Bad Character Heuristic's smart handling of character mismatches, making  it
 Discerns matching segments on the right side of a mismatch, optimizing pattern alignment and minimizing character comparisons.
 
 These heuristics make Boyer-Moore a go-to choice for efficient text searching in large documents. In this exploration, we'll delve deeper into how these heuristics drive the algorithm's effectiveness, shedding light on its elegance and significance in computer science. Join us on this journey into the Boyer-Moore algorithm and its ingenious heuristics!
+
+1) If a mismatch occurs:
+
+- If the mismatched character previously appears in the pattern, align the last occurrence of that character in the pattern with its first occurrence in the pattern.
+- If the mismatched character does not have a previous occurrence in the pattern, find the longest suffix that matches a substring of the pattern's prefix and align it in the text.
+
+2) Choose the larger shift value between the two cases to skip more characters in the text and reduce comparisons.
+
+The Good Suffix Heuristic is a critical component of the Boyer-Moore string searching algorithm. It efficiently handles mismatches during pattern matching by determining how the pattern can be shifted to maximize the number of skipped characters in the text. This optimization significantly improves the algorithm's performance, making it a powerful and efficient tool for searching patterns in large texts.
