@@ -1,6 +1,6 @@
 # Boyer-Moore String Matching Project
 
-# For The Wiki Page:
+# The Wiki Pages:
 - [Wiki Page 1](Wiki1.md)
 - [Wiki Page 2](Wiki2.md)
 
