@@ -21,16 +21,70 @@ namespace BoyerMoore{
 
         static void GoodSuffixTable(string pattern){
 
-            int pLength = pattern.Length;
-            int lastIndex = pLength - 1;
+            int pLength = pattern.Length; // Pattern Length
+            int lastIndex = pLength - 1; // Last Pattern Character
 
+            List<int> goodSuffixTable = new List<int>();
+            for(int i = 0; i < pLength; i++){
+                goodSuffixTable.Add(0); // Generate Default Good Suffix Table
+            }
+            Console.WriteLine("Good Suffix Table Function Run.");
+
+
+
+
+            for(int i = 1; i < pLength - 1 ; i++){ // Iteration for Suffix
+
+                // Console.WriteLine("Outer Iteration on index" + i);
+                string tempSuffix = pattern.Substring(pLength - i); // Get temp suffix
+                string tempPrefix = pattern[pLength - i - 1].ToString(); // Get Prefix (Character previous to our suffix)
+                // Console.WriteLine($"Current Suffix {tempSuffix} Current Prefix {tempPrefix}");
+
+                int suffixLength = tempSuffix.Length;
+
+                for(int x = 1; x < pLength - suffixLength ; x++){// Find next Prefix up to characters excluding the suffix characters.
+                    // Console.WriteLine("Inner iteration inside " + x);
+
+                    // Console.WriteLine($"{pattern.Substring(x, suffixLength)} Compared with {tempSuffix}");
+                    // Console.WriteLine("ooo, what's this " + pattern.Substring(x, suffixLength));
             
+        
+                    if(pattern.Substring(x , suffixLength) == tempSuffix){ // If Prefix matches Suffix and has a different Previous character
+                        if(pattern[x - 0].ToString() != tempPrefix){
+                            // Console.WriteLine($"Found matching Prefix, Our Suffix {tempSuffix} with preceeding {pattern[x - 1]} matched with {pattern.Substring(x, suffixLength)}");
+                            // Console.WriteLine("This ran");
+                            int prefixIndex = x - 1; // Index at which the inner prefix starts from
+                        // Console.WriteLine($"Prefix : {pattern.Substring(x, suffixLength)} Is different to Suffix : {tempSuffix}.");
+                        
+                        
+                        // Console.WriteLine($"Prefix of {pattern[x-1]} matches prefix of suffix {tempPrefix}");
+                        
+                        // Console.WriteLine($"Index at {x-1}");
 
+                        goodSuffixTable[pLength - suffixLength] = (pLength - i - suffixLength);
+                            
+                        }
+                    
+
+                        
+                        
+                        
+                    }
+
+                    
+                }
+                
+                
+            
+            }
+
+            foreach(int element in goodSuffixTable){
+                Console.WriteLine(element);
+            }
 
 
 
         }
-        
 
 
 
@@ -41,6 +95,8 @@ namespace BoyerMoore{
             Dictionary<string, int> badMatchTable = new Dictionary<string, int>(); // Create Dictionary for Bad Match Table
             int pLength = pattern.Length;
             int tLength = text.Length;
+
+            GoodSuffixTable(pattern);
 
 
             // # Creation of Bad Match Table
@@ -92,8 +148,8 @@ namespace BoyerMoore{
                 
                 if(text[index] == pattern[lastElement]){ // If the right-most character matches with a character
                     Console.WriteLine("Match found ");
-                    int l = lastElement; // This will represent the right most character
-                    int k = index; // K will represent the index of which the pattern starts from the right most. 
+                    int l = lastElement;
+                    int k = index;
 
                     while(l > 0){ // (When Right most character of pattern matches something on the text) Iterate till all characters are checked.
 
