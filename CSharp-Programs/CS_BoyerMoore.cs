@@ -19,6 +19,14 @@ namespace BoyerMoore{
         }
 
 
+
+
+        
+        
+        
+        
+        
+        
         static void GoodSuffixTable(string pattern){
 
             int pLength = pattern.Length; // Pattern Length
@@ -37,57 +45,71 @@ namespace BoyerMoore{
 
                 // Console.WriteLine("Outer Iteration on index" + i);
                 string tempSuffix = pattern.Substring(pLength - i); // Get temp suffix
-                string tempPrefix = pattern[pLength - i - 1].ToString(); // Get Prefix (Character previous to our suffix)
+                string precedingChar = pattern[pLength - i - 1].ToString(); // Get Preceding character (Character previous to our suffix)
                 // Console.WriteLine($"Current Suffix {tempSuffix} Current Prefix {tempPrefix}");
 
+                bool noPrefix = false; // Matching Prefix to Suffix was found but has same previous character. (For Optimization)
+                int lastPrefix = 0; // Last Prefix with a common preceding character 
                 int suffixLength = tempSuffix.Length;
+
 
                 for(int x = 1; x < pLength - suffixLength ; x++){// Find next Prefix up to characters excluding the suffix characters.
                     // Console.WriteLine("Inner iteration inside " + x);
 
                     // Console.WriteLine($"{pattern.Substring(x, suffixLength)} Compared with {tempSuffix}");
                     // Console.WriteLine("ooo, what's this " + pattern.Substring(x, suffixLength));
-            
-        
-                    if(pattern.Substring(x , suffixLength) == tempSuffix){ // If Prefix matches Suffix and has a different Previous character
-                        if(pattern[x - 0].ToString() != tempPrefix){
+                    
+
+                    
+                    if(pattern.Substring(x , suffixLength) == tempSuffix){ // If Prefix matches Suffix
+
+
+                         // Case 1 - Matching Prefix with Suffix but different previous characters.
+
+                         // Developer Note. If two existing prefixes with different 
+                         // preceding characters exist. This will basically override the earliest 
+                         // prefixes with the last one automatically. (Hence getting the "longest prefix")
+
+                        if(pattern[x].ToString() != precedingChar){ 
+
                             // Console.WriteLine($"Found matching Prefix, Our Suffix {tempSuffix} with preceeding {pattern[x - 1]} matched with {pattern.Substring(x, suffixLength)}");
                             // Console.WriteLine("This ran");
                             int prefixIndex = x - 1; // Index at which the inner prefix starts from
-                        // Console.WriteLine($"Prefix : {pattern.Substring(x, suffixLength)} Is different to Suffix : {tempSuffix}.");
-                        
-                        
-                        // Console.WriteLine($"Prefix of {pattern[x-1]} matches prefix of suffix {tempPrefix}");
-                        
-                        // Console.WriteLine($"Index at {x-1}");
+                            noPrefix = false; // a prefix was found.
 
-                        goodSuffixTable[pLength - suffixLength] = (pLength - i - suffixLength);
-                            
+                            goodSuffixTable[pLength - suffixLength] = (pLength - i - suffixLength);
+
+
+                         // Case 2 - Find the longest Prefix of our suffix ( This is if Case 1 Has absolutely no chance in occuring)
+                        }else{
+                         
+                            lastPrefix = x; // Update Index to when last prefix was found. (This is to monitor all prefixes if more than 1 prefix with same preceding char is found.)
+                            noPrefix = true; // To acknowledge that till now. No matching prefix was found.
+
+                            // Wait till inner iteration finishes. 
+
                         }
                     
 
-                        
-                        
-                        
                     }
-
-                    
                 }
-                
-                
-            
-            }
+                // Continuation of Case 2.
+                if(noPrefix){
+                    for(int x = lastPrefix; x <= pLength - suffixLength; x++){
+                        Console.WriteLine("Suffix of Prefix " + pattern.Substring(lastPrefix, x));
+                    }
+                }
 
+
+
+
+            }
+            Console.WriteLine("---------");
             foreach(int element in goodSuffixTable){
                 Console.WriteLine(element);
             }
-
-
-
+            Console.WriteLine("---------");
         }
-
-
-
 
 
 
@@ -118,7 +140,7 @@ namespace BoyerMoore{
             badMatchTable.Add("*", pattern.Length); 
             
             
-            Console.WriteLine("-----------");
+            Console.WriteLine("----- Bad Match Table------");
             foreach(var kvp in badMatchTable){
                 Console.WriteLine(kvp);
             }
@@ -126,103 +148,53 @@ namespace BoyerMoore{
 
 
 
-
-
-
-            // For Debugging 
-            // foreach(var entry in badMatchTable){ 
-            //     Console.WriteLine(entry.Key + " : " + entry.Value);
-            // }
-
-            // More Efficient Search
-
-
-            int index = pLength - 1; // Starting Index.
-            int lastElement = pattern.Length - 1; // Last Element of pattern
+            int index = pLength - 1; // Index of Entire text. which starts at right most character.
+            int lastElement = pLength - 1; // Last Element of pattern
 
 
             while(index < tLength){ // Iterate until index reaches tLength
-                // Console.WriteLine(" --- Running Outer Iteration with index value " + index);
-                
-                Console.WriteLine("Comparing " + text[index] + " With " + pattern[lastElement] + " Text Index : " + index   );
+
                 
                 if(text[index] == pattern[lastElement]){ // If the right-most character matches with a character
-                    Console.WriteLine("Match found ");
-                    int l = lastElement;
-                    int k = index;
 
-                    while(l > 0){ // (When Right most character of pattern matches something on the text) Iterate till all characters are checked.
+                    int l = lastElement; // iteration counter for character by character comparison.
 
-                        // Console.WriteLine("---- Inner Iteration");
-                        // Console.WriteLine("Comparing " + text[k] + " with " + pattern[l]);
+                    while(l >= 0){ // (When Right most character of pattern matches something on the text) Iterate till all characters are checked.
                         
-                        if(text[k] != pattern[l]){ // If characters in pattern & text don't match.
-
-                            // Console.WriteLine("No Match Found " + text[k]);
-
+                        if(text[index] != pattern[l]){ // If characters in pattern & text don't match.
+                        
                             // Check from Bad Match Table how much to skip 
-                           if(badMatchTable.ContainsKey(text[k].ToString())){ // Check if mismatched character in text exists on table 
-                               index = index + badMatchTable[text[k].ToString()]; // Skip respective positions of character
+                           if(badMatchTable.ContainsKey(text[index].ToString())){ // Check if mismatched character in text exists on table 
+                               index = index + badMatchTable[text[index].ToString()]; // Skip respective positions of character
                                break;
                            }else{
-                            //   Console.WriteLine("Match Found " + text[k]);
+
                               index = index + badMatchTable["*"]; // Skip entire pattern length.
                               break;
                            }
                         }else{
-                            l--;
-                            k--;
+                          l--; // Decrement to next (previous) character in pattern
+                          index--; // Decrement to next (previous) character in text
                         }
-                        if(l == 0){ // If the algorithm manages to match every character, It's a match.
-                            Console.WriteLine("Match found at : " + (k) );
-                            break;
-                        }
-                        index++;
 
+
+                        if(l < 0){ // If the algorithm manages to match every character, It's a match.
+                            Console.WriteLine("Match found at : " + (index + 1) ); 
+                            index = index + pLength + 1; // Update the Index to go to the n + 1th character.
+                            break;
+                            
+                        }
                     }
-                }else{
-                    // Console.WriteLine(" --- No Outer Match");
-                    if(badMatchTable.ContainsKey(text[index].ToString())){
-                        // Console.WriteLine(" Word " + text[index] +  " is a key in dictionary, giving new value to index");
-                        index = index + badMatchTable[text[index].ToString()];
-                        Console.WriteLine(index);
+                }else{ // If the first right most character doesn't match straight away
+
+                    if(badMatchTable.ContainsKey(text[index].ToString())){ // Find if it exists in the bad match table
+                        index = index + badMatchTable[text[index].ToString()]; // If it does, add it's respective value to the index
                     }else{
-                        // Console.WriteLine(" Word " + text[index] +  " is not a key in dictionary, giving new value to index");
-                        index = index + badMatchTable["*"];
-                        // Console.WriteLine(index);
-  
+                        index = index + badMatchTable["*"]; // If not, skip the whole pattern length.
                     }
                 }
                 
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-             
-
-
-
-
-
 
         }
     }
