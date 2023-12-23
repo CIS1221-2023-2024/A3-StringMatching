@@ -15,15 +15,8 @@ namespace BoyerMoore{
             
             BoyerMoore(userText, userPattern);
 
-
         }
 
-
-
-
-        
-        
-        
         static int GetSuffixLength(string pattern, int index){ // Returns the suffix length 
             int suffixLength = 0;
             int pLength = pattern.Length;
@@ -62,15 +55,16 @@ namespace BoyerMoore{
             
             for(int i = 0; i < pLength; i++){
                 goodSuffixTable.Add(-1); // Initilizing default values for good suffix table values.
-                // Console.WriteLine($" At This index {i} = {goodSuffixTable[i]}");
+
             }
             
-            // Console.WriteLine("Yes sir this ran");
+
             
             // First Case -- A Matching Prefix found within the Pattern (This prefix equals our Suffix)
             for(int i = pLength - 1; i >= 0; i--){ // Start from the right most character 
-            
+                
                 string tempSuffix = pattern.Substring(i + 1); // Generate a suffix 
+
 
                 for(int x = 0; x < pLength - tempSuffix.Length - 1; x++){ // Find a Matching prefix
                     string tempPrefix = pattern.Substring(0, x); // Generate a prefix
@@ -83,16 +77,23 @@ namespace BoyerMoore{
                 }
 
                 goodSuffixTable[i] = lastPrefixIndex + (pattern.Length - 1 - i);
+             
 
             }
 
             // Second Case -- A Tail of the suffix occurs in the pattern before the suffix itself.
+            // Example : our Pattern is ABDATCATA, and our suffix is ATA. the Tail of it is TA. and TA appears at index 3.
+
+
             // (Credits yet again to Github.com/dwnusbaum for the 2nd bit)
-            for(int i = 0; i < pLength - 1; i++){
+            for(int i = 1; i < pLength - 1; i++){ // We will skip i = 0 because it returns nothing useful.
+ 
                 int suffixLength = GetSuffixLength(pattern, i); // Gets the Suffix Length for each suffix
-                if (pattern[i - suffixLength] != pattern[pLength - 1 - suffixLength]){ 
+                
+                if (pattern[i - suffixLength] != pattern[pLength - 1 - suffixLength]){                   
                     goodSuffixTable[pLength - 1 - suffixLength] = pLength - 1 - i + suffixLength;
                 }
+
             }
 
             return goodSuffixTable;
@@ -128,6 +129,8 @@ namespace BoyerMoore{
             badMatchTable.Add("*", pattern.Length); 
             
             
+            
+            // For Testing Purposes
             Console.WriteLine("----- Bad Match Table------");
             foreach(var kvp in badMatchTable){
                 Console.WriteLine(kvp);
@@ -161,19 +164,16 @@ namespace BoyerMoore{
                             // Check from Bad Match Table how much to skip 
                            if(badMatchTable.ContainsKey(text[index].ToString())){ // Check if mismatched character in text exists on table 
                                int skip = Math.Max(badMatchTable[text[index].ToString()], GoodSuffix[l]); // Choose the largest skip possible.
-                               Console.WriteLine("Maximum Skip chosen. " + skip);
                                index = index + skip; // Skip respective positions of character
                                break;
                            }else{
                               int skip = Math.Max(badMatchTable["*"], GoodSuffix[l]); // Choose largest skip possible
-                              Console.WriteLine("Maximum Skip chosen. " + skip);
-
                               index = index + skip; // Skip entire pattern length.
                               break;
                            }
                         }else{
-                          l--; // Decrement to next (previous) character in pattern
-                          index--; // Decrement to next (previous) character in text
+                          l--; // Decrement to preceding character in pattern
+                          index--; // Decrement to preceding character in text
                         }
 
 
@@ -189,11 +189,9 @@ namespace BoyerMoore{
 
                     if(badMatchTable.ContainsKey(text[index].ToString())){ // Find if it exists in the bad match table
                         int skip = Math.Max(badMatchTable[text[index].ToString()], GoodSuffix[lastElement]); // Choose the largest skip possible.
-                        Console.WriteLine("Maximum Skip chosen. " + skip);
                         index = index + skip; // If it does, add it's respective value to the index
                     }else{
-                        int skip = Math.Max(badMatchTable[text[index].ToString()], GoodSuffix[lastElement]); // Choose the largest skip possible.
-                        Console.WriteLine("Maximum Skip chosen. " + skip);
+                        int skip = Math.Max(badMatchTable["*"], GoodSuffix[lastElement]); // Choose the largest skip possible.
                         index = index + skip; // If not, skip the whole pattern length.
                     }
                 }
