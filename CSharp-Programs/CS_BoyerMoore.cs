@@ -24,101 +24,89 @@ namespace BoyerMoore{
         
         
         
-        
-        
-        
-        static void GoodSuffixTable(string pattern){
+        static int GetSuffixLength(string pattern, int index){ // Returns the suffix length 
+            int suffixLength = 0;
+            int pLength = pattern.Length;
 
-            int pLength = pattern.Length; // Pattern Length
-            int lastIndex = pLength - 1; // Last Pattern Character
+            for(int i = index; i >= 0; i--){
+                if(pattern[i] == pattern[pLength - 1 - index + i]){ // If both characters at both pointers match
+                    suffixLength++; // Increment suffix length
+                }
+                // This is to check for any matching substrings of the Suffix, and of the Pattern itself. the Left Pointer will start at Index, The left will start at the end of the pattern
+                // Then each pointer goes down by a character each time to check if they both point at matching strings.
+
+
+                // EG: Our Pattern is ABACADATA
+                // When Index = 4. Then
+                //  ABACADATA
+                //      ^   ^ First Match. Increase Suffix Length.
+                //  ABACADATA Now The left Pointer goes down to C, Right pointer goes down to T
+                //     ^   ^ No Match.
+                //  ABACADATA
+                //    ^   ^  Match. Increase suffix Length. And thus continue until I < 0.
+                // Credits to github.com/dwnusbaum for this bit of code ( my saviour )
+            }
+
+            return suffixLength;
+
+
+        }
+        
+        static List<int> GoodSuffixTable(string pattern){
+
+            int pLength = pattern.Length; // Length of the pattern
+            int lastPrefixIndex = pLength - 1; // Recording the last prefix that was recorded by its index.
 
             List<int> goodSuffixTable = new List<int>();
+            
+            
             for(int i = 0; i < pLength; i++){
-                goodSuffixTable.Add(0); // Generate Default Good Suffix Table
+                goodSuffixTable.Add(-1); // Initilizing default values for good suffix table values.
+                // Console.WriteLine($" At This index {i} = {goodSuffixTable[i]}");
             }
-            Console.WriteLine("Good Suffix Table Function Run.");
+            
+            // Console.WriteLine("Yes sir this ran");
+            
+            // First Case -- A Matching Prefix found within the Pattern (This prefix equals our Suffix)
+            for(int i = pLength - 1; i >= 0; i--){ // Start from the right most character 
+            
+                string tempSuffix = pattern.Substring(i + 1); // Generate a suffix 
 
-
-
-
-            for(int i = 1; i < pLength - 1 ; i++){ // Iteration for Suffix
-
-                // Console.WriteLine("Outer Iteration on index" + i);
-                string tempSuffix = pattern.Substring(pLength - i); // Get temp suffix
-                string precedingChar = pattern[pLength - i - 1].ToString(); // Get Preceding character (Character previous to our suffix)
-                // Console.WriteLine($"Current Suffix {tempSuffix} Current Prefix {tempPrefix}");
-
-                bool noPrefix = false; // Matching Prefix to Suffix was found but has same previous character. (For Optimization)
-                int lastPrefix = 0; // Last Prefix with a common preceding character 
-                int suffixLength = tempSuffix.Length;
-
-
-                for(int x = 1; x < pLength - suffixLength ; x++){// Find next Prefix up to characters excluding the suffix characters.
-                    // Console.WriteLine("Inner iteration inside " + x);
-
-                    // Console.WriteLine($"{pattern.Substring(x, suffixLength)} Compared with {tempSuffix}");
-                    // Console.WriteLine("ooo, what's this " + pattern.Substring(x, suffixLength));
-                    
+                for(int x = 0; x < pLength - tempSuffix.Length - 1; x++){ // Find a Matching prefix
+                    string tempPrefix = pattern.Substring(0, x); // Generate a prefix
 
                     
-                    if(pattern.Substring(x , suffixLength) == tempSuffix){ // If Prefix matches Suffix
+                    if(tempSuffix == tempPrefix){ // if our Prefix is matching our suffix
 
-
-                         // Case 1 - Matching Prefix with Suffix but different previous characters.
-
-                         // Developer Note. If two existing prefixes with different 
-                         // preceding characters exist. This will basically override the earliest 
-                         // prefixes with the last one automatically. (Hence getting the "longest prefix")
-
-                        if(pattern[x].ToString() != precedingChar){ 
-
-                            // Console.WriteLine($"Found matching Prefix, Our Suffix {tempSuffix} with preceeding {pattern[x - 1]} matched with {pattern.Substring(x, suffixLength)}");
-                            // Console.WriteLine("This ran");
-                            int prefixIndex = x - 1; // Index at which the inner prefix starts from
-                            noPrefix = false; // a prefix was found.
-
-                            goodSuffixTable[pLength - suffixLength] = (pLength - i - suffixLength);
-
-
-                         // Case 2 - Find the longest Prefix of our suffix ( This is if Case 1 Has absolutely no chance in occuring)
-                        }else{
-                         
-                            lastPrefix = x; // Update Index to when last prefix was found. (This is to monitor all prefixes if more than 1 prefix with same preceding char is found.)
-                            noPrefix = true; // To acknowledge that till now. No matching prefix was found.
-
-                            // Wait till inner iteration finishes. 
-
-                        }
-                    
-
-                    }
-                }
-                // Continuation of Case 2.
-                if(noPrefix){
-                    for(int x = lastPrefix; x <= pLength - suffixLength; x++){
-                        Console.WriteLine("Suffix of Prefix " + pattern.Substring(lastPrefix, x));
+                        lastPrefixIndex = i + 1; // Record the Index that our suffix starts from 
                     }
                 }
 
-
-
+                goodSuffixTable[i] = lastPrefixIndex + (pattern.Length - 1 - i);
 
             }
-            Console.WriteLine("---------");
-            foreach(int element in goodSuffixTable){
-                Console.WriteLine(element);
+
+            // Second Case -- A Tail of the suffix occurs in the pattern before the suffix itself.
+            // (Credits yet again to Github.com/dwnusbaum for the 2nd bit)
+            for(int i = 0; i < pLength - 1; i++){
+                int suffixLength = GetSuffixLength(pattern, i); // Gets the Suffix Length for each suffix
+                if (pattern[i - suffixLength] != pattern[pLength - 1 - suffixLength]){ 
+                    goodSuffixTable[pLength - 1 - suffixLength] = pLength - 1 - i + suffixLength;
+                }
             }
-            Console.WriteLine("---------");
+
+            return goodSuffixTable;
         }
-
-
+        
+    
 
         static void BoyerMoore(string text, string pattern){
             Dictionary<string, int> badMatchTable = new Dictionary<string, int>(); // Create Dictionary for Bad Match Table
             int pLength = pattern.Length;
             int tLength = text.Length;
+            bool found = false; // This is to show that at least, something was found. 
 
-            GoodSuffixTable(pattern);
+            List<int> GoodSuffix = GoodSuffixTable(pattern); // Generate a good suffix table
 
 
             // # Creation of Bad Match Table
@@ -146,6 +134,13 @@ namespace BoyerMoore{
             }
             Console.WriteLine("-----------");
 
+            Console.WriteLine("---- Good Suffix Table -----");
+            foreach(var kvp in GoodSuffix){
+                Console.WriteLine(kvp);
+            }
+            Console.WriteLine("-----------");
+
+
 
 
             int index = pLength - 1; // Index of Entire text. which starts at right most character.
@@ -165,11 +160,15 @@ namespace BoyerMoore{
                         
                             // Check from Bad Match Table how much to skip 
                            if(badMatchTable.ContainsKey(text[index].ToString())){ // Check if mismatched character in text exists on table 
-                               index = index + badMatchTable[text[index].ToString()]; // Skip respective positions of character
+                               int skip = Math.Max(badMatchTable[text[index].ToString()], GoodSuffix[l]); // Choose the largest skip possible.
+                               Console.WriteLine("Maximum Skip chosen. " + skip);
+                               index = index + skip; // Skip respective positions of character
                                break;
                            }else{
+                              int skip = Math.Max(badMatchTable["*"], GoodSuffix[l]); // Choose largest skip possible
+                              Console.WriteLine("Maximum Skip chosen. " + skip);
 
-                              index = index + badMatchTable["*"]; // Skip entire pattern length.
+                              index = index + skip; // Skip entire pattern length.
                               break;
                            }
                         }else{
@@ -179,7 +178,8 @@ namespace BoyerMoore{
 
 
                         if(l < 0){ // If the algorithm manages to match every character, It's a match.
-                            Console.WriteLine("Match found at : " + (index + 1) ); 
+                            Console.WriteLine("Match found at : " + (index + 1) );
+                            found = true; // something was at least found.
                             index = index + pLength + 1; // Update the Index to go to the n + 1th character.
                             break;
                             
@@ -188,12 +188,19 @@ namespace BoyerMoore{
                 }else{ // If the first right most character doesn't match straight away
 
                     if(badMatchTable.ContainsKey(text[index].ToString())){ // Find if it exists in the bad match table
-                        index = index + badMatchTable[text[index].ToString()]; // If it does, add it's respective value to the index
+                        int skip = Math.Max(badMatchTable[text[index].ToString()], GoodSuffix[lastElement]); // Choose the largest skip possible.
+                        Console.WriteLine("Maximum Skip chosen. " + skip);
+                        index = index + skip; // If it does, add it's respective value to the index
                     }else{
-                        index = index + badMatchTable["*"]; // If not, skip the whole pattern length.
+                        int skip = Math.Max(badMatchTable[text[index].ToString()], GoodSuffix[lastElement]); // Choose the largest skip possible.
+                        Console.WriteLine("Maximum Skip chosen. " + skip);
+                        index = index + skip; // If not, skip the whole pattern length.
                     }
                 }
                 
+            }
+            if(!found){
+                Console.WriteLine("The string in question was not found.");
             }
 
         }
