@@ -3,6 +3,8 @@
 In this section we will be benchmarking the boyer-moore algorithm in both programming languages to determine it's efficiency compared to other algorithms in the same programming languages, as well as 
 documenting the resources it requires as well as execution time.
 
+NOTE : The benchmarking made here will be benchmarking the attempts of implementing the algorithm and not the *"actual algorithm"* in a perfect sense. Better attempts exists on the internet
+
 
 # Execution Time
 We will be documenting the execution time the boyer moore algorithm takes through each respective programming language and comparing them with other algorithms executed in the same programming languages.
