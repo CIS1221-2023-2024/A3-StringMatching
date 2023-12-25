@@ -3,6 +3,7 @@
 # The Wiki Pages:
 - [Wiki Page 1](Wiki1.md)
 - [Wiki Page 2](Wiki2.md)
+- [Wiki Page 3](Wiki3.md)
 
 # Introduction
 This project implements the Boyer-Moore algorithm for string matching, demonstrating its efficiency and effectiveness in text search. The implementation is provided in both Python and C# to showcase the algorithm's application in different programming environments.
