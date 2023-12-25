@@ -59,6 +59,18 @@ If you're using a built-in terminal like VSCode's Terminal, you may have to run 
 ./CSharpProgram.exe
 ```
 
+## Python Files
+If you are using an IDE like VSCode, you can run the python files through there by using the Run feature. However if you wish to access this with cmd prompt;
+```
+cd path/to/python/file
+```
+And once in the same directory as the python file simply run the command
+```
+python pythonProgram.py
+```
+
+
+
 # Reviewing and Evaluating the Project
 Guidelines for Reviewers
 Focus on the following aspects:
@@ -86,18 +98,21 @@ Memory Usage: Efficient use of resources.
 Cross-Language Functionality: Consistency in results between Python and C# versions.
 
 # Input Examples
+You may input the following example patterns in the C# Console as well as the Python Console when running the programs.
 
 Example (1) 
 
 text = "AABAACAADAABAAABAAAABABBABABAAABBBBAAABABAAABBBABAAABABBAABABBAABABA"
 
     pattern = "AABA"
+    output : Match Found at 0,9,56
 
 Example (2) 
 
 text = "KEOLCOLALLOCOLAKELEKCOLACOCCOCOLACOLAAAOLOCOALCOLAOCLOACOLAALOOCLCOLAKE"
 
     pattern = "COLA"
+    output: Match Found at 4,11,20,29,33,46,55,65
     
 # Contact
 
