@@ -33,14 +33,14 @@ Recorded Time: **7.86 Milliseconds**
 
 Recorded Time: **8.24 Milliseconds**
 
-**Overall Average:** **8.05 Milliseconds**
+**Overall Average: 8.05 Milliseconds**
 
 
 Other Algorithms like the **KMP (Knuth-Morris Pratt)** and **Naive Algorithm** have been run as well with the same input example to document the time difference between the three algorithms.
 
-**KMP Average Time: **2.5 Milliseconds**
+**KMP Average Time: 2.5 Milliseconds**
 
-**Naive Algorithm: **1.02 Milliseconds**
+**Naive Algorithm: 1.02 Milliseconds**
 
 Through a graph representation, we may see that with C#, The Boyer Moore Algorithm actually took **much more time** than both the two algorithms.
 
@@ -50,6 +50,42 @@ Through a graph representation, we may see that with C#, The Boyer Moore Algorit
 
 This contradiction of Boyer Moore supposedly being more efficient may come down to either C# itself or the way a programmer themself may come up in implementing the solutions.
 **In a given sample code of Boyer Moore taken from https://www.geeksforgeeks.org/boyer-moore-algorithm-for-pattern-searching/ the Algorithm actually ran on average, 1 Millisecond, proving that given the proper implementation, takes way less time than KMP**
+
+
+## Python Boyer Moore
+We will also be using a pre-existing library to document and monitor the execution time for the python file of the Boyer Moore Algorithm as well as comparing the execution time of this algorithm with the same other ones (KMP & Naive)
+
+
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/8673fea2-070f-40f0-a0e2-abf1bc68786f)
+
+**Note:** The time difference calculated in the end is multiplied by 1000 to convert it into **milliseconds**
+### 1st Test -- Python
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/77c685a2-d962-4c29-9b30-507746654b3b)
+
+Recorded Time: **0.5 Milliseconds** 
+
+### 2nd Test -- Python
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/a4333b8d-13b2-4bbd-9e7d-ca6e9604493c)
+
+Recorded Time: **0.5 Milliseconds** 
+
+**Overall Average: 0.5 Milliseconds**
+
+
+And of course, we've run the other algorithms in the respective python language as well and collected their average:
+
+**KMP Average Time: 1.51**
+
+**Naive Average Time: 1.53** 
+
+
+
+
+
+
+
+
+
 
 
 
