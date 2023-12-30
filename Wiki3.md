@@ -138,11 +138,33 @@ Console.WriteLine("Current Memory Usage: " + (currentProcess.WorkingSet65 * (102
 
 
 Therefore we'll be keeping track of the **Highest Memory Usage** that the algorithm may be allocated.
+### Result -- C#
+As a result, It seems that the average Memory usage of C# is roughly **13 MegaBytes**
 
-As an
 
+## Python Memory Usage
+For this the given packages that we will be using (the package involved **memory_profiler**). This package gives us details of the Memory usage of **each function that is placed under a decorator @profile**
+```python
+from memory_profiler import profile
+@profile
 
+# One Example of the functions we will be monitoring.
 
+def bad_character_table(pattern):
+    # empty dictionary ti store the character postions
+    table = {}
+    # to get the length of the pattern
+    pattern_length = len(pattern)
+    # Loop through the pattern characters, except for the last one
+    for i in range(pattern_length - 1):
+        # to Calculate the "bad character" shift for the current character to store it in the table
+        table[pattern[i]] = pattern_length - 1 - i
+    return table
+```
+In the case of all functions involved in the boyer moore algorithm, we will be placing the **@profile** decorator above each function.
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/b2e654cd-5ce8-46e7-b34e-3bc44e919f57)
+
+The image above is an example of the console log 
 
 
 
