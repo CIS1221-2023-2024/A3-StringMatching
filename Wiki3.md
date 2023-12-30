@@ -164,7 +164,9 @@ def bad_character_table(pattern):
 In the case of all functions involved in the boyer moore algorithm, we will be placing the **@profile** decorator above each function.
 ![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/b2e654cd-5ce8-46e7-b34e-3bc44e919f57)
 
-The image above is an example of the console log 
+The image above is an example of the prompt giving us information of the memory usage for each function. 
+
+As a result, all Functions beng run had utilized an average of **40.75 Megabytes**
 
 
 
