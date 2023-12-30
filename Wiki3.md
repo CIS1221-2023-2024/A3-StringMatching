@@ -109,7 +109,7 @@ And of course, we've run the other algorithms in the respective python language 
 
 ![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/ee41fd76-0345-414d-b502-b8f9c631b594)
 
-
+## Conclusion
 Thus Overall, in Comparison Python was capable at running our implemented algorithms of Boyer Moore roughly **600%** faster.
 In a general comparison however, with the online source of the C# implementation on Boyer Moore, Python would've managed to run at only **200%** faster speeds.
 
