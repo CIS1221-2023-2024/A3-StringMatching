@@ -167,6 +167,15 @@ In the case of all functions involved in the boyer moore algorithm, we will be p
 The image above is an example of the prompt giving us information of the memory usage for each function. 
 
 As a result, all Functions beng run had utilized an average of **40.75 Megabytes**
+Therefore;
+
+**Python : ~40.75MB Memory Use**
+
+**CSharp : ~13MB Memory Use**
+
+## Conclusion
+
+Comparing the overall memory usage of Python and C# with the boyer moore algorithm
 
 
 
