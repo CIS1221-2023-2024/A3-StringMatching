@@ -115,6 +115,39 @@ In a general comparison however, with the online source of the C# implementation
 
 
 
+# Memory Usage
+Both the C# and Python programs of the Boyer Moore Algorithms will be documented based on their memory usage. For the sake of mainly comparing the difference between Python and C# we will only be comparing the Memory usage of the Boyer Moore algorithm between python and C# and not focus on other algorithms such as Naive or KMP
+
+We'll be using the given input example to test the memory usage provided the pattern is longer to extend further the potential tables that will be generated and saved.
+
+```
+ExampleInput = ABDBADABTACADDATABWADADTABADBADTAFSAFTAOZLXCJADATAQWUEUYIQAYHASUIDYAHSIUDYUIAYADTAFHZXCHKJZXHFKJADTAIJIOJOIJIOJOIADTAADTAFSADDUISAHIUHNXZJICNIJNADTAFSAD
+Pattern = ADTAFSAD
+```
+
+
+
+## C# Memory Usage
+In C# within the System.Diagnostics Namespace we utilized an already defined method that keeps track of memory usage that the program being run uses **dynamically** (meaning this value can change over time depending on specific parts of the algorthim). 
+
+This will be constantly monitored by placing the following line of code at multiple parts of the algorithm, especially inside parts where there are for loops.
+```C#
+Process currentProcess = new Process; // Define a Process Object to get access to the monitoring methods
+Console.WriteLine("Current Memory Usage: " + (currentProcess.WorkingSet65 * (1024 * 1024)) + " MB"); // Display the current Memory Usage at the line of execution in terms of Megabytes (.WorkingSet64 is in Bytes)
+```
+
+
+Therefore we'll be keeping track of the **Highest Memory Usage** that the algorithm may be allocated.
+
+As an
+
+
+
+
+
+
+
+
 
 
 
