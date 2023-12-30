@@ -1,0 +1,12 @@
+# Edge Cases
+In this section, we will be challenging the boundaries of the algorithms implemented in Python & CSharp by giving in Inputs that seem to enter an area of extremity. These can include an absurd large amount of characters, involving way too many special characters or punctuations, attempting to "hide" the words in punctuation which can actually confuse the algorithm in it's ability to skip towards the required pattern, etc.
+
+
+### Edge Case 1 - A very Large String with a very small pattern (just to find 1 character)
+
+In this edge case test, we will be inputting a very Large string with a very small pattern to locate from.
+
+```
+Input: VCOKBJCBVOKNJPIOBVKJPOGHKUPOYTKPOGMBVKLCMNFLGKHKPORTYMHNKLFBMNLKGHMJPOYTG,MOGHKJYTUPOM,NLK;MTOPKHMPRTOKPORJKPOQWWSZKXOCMKCOLMVCKLMBGFKL;MHPORTYKYTPOERKGHROLBMCV,BM;LRFDGLHYRT[PYKHLPLGFDKBMLFGVMHLKFGHGLVCOKBJCBVOKNJPIOBVKJPOGHKUPOYTKPOGMBVKLCMNFLGKHKPORTYMHNKLFBMNLKGHMJPOYTG,MOGHKJYTUPOM,NLK;MTOPKHMPRTOKPORJKPOQWWSZKXOCMKCOLMVCKLMBGFKL;MHPORTYKYTPOERKGHROLBMCV,BM;LRFDGLHYRT[PYKHLPLGFDKBMLFGVMHLKFGHGLVCOKBJCBVOKNJPIOBVKJPOGHKUPOYTKPOGMBVKLCMNFLGKHKPORTYMHNKLFBMNLKGHMJPOYTG,MOGHKJYTUPOM,NLK;MTOPKHMPRTOKPORJKPOQWWSZKXOCMKCOLMVCKLMBGFKL;MHPORTYKYTPOERKGHROLBMCV,BM;LRFDGLHYRT[PYKHLPLGFDKBMLFGVMHLKFGHGL ((A))FDGIOJFSXOVJXCOIJVLCKXJKGLFDJGHPOTKREPOYKGFLBL;B,MFG;LKHJP[OTYKLJH;NHMNB.,CVVB,VC.MBLCKVKL;PGFDKHL;M,L;BM,G;L,M4596-0945-TNL,NL;FVK;'#;
+Pattern : A 
+```
