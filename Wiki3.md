@@ -138,7 +138,7 @@ Console.WriteLine("Current Memory Usage: " + (currentProcess.WorkingSet65 * (102
 
 
 Therefore we'll be keeping track of the **Highest Memory Usage** that the algorithm may be allocated.
-### Result -- C#
+ 
 As a result, It seems that the average Memory usage of C# is roughly **13 MegaBytes**
 
 
