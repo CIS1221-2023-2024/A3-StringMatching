@@ -181,7 +181,7 @@ Comparing the overall memory usage of Python and C# with the boyer moore algorit
 
 ![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/4c4bf539-e92a-4a70-b10d-c77d0a517697)
 
-
+The C# Implementation of Boyer Moore takes up **~69%** Less memory than the Python Implementation 
 
 
 
