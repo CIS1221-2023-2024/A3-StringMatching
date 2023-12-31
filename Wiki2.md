@@ -24,9 +24,11 @@ Worst-case Time Complexity: O(nm), which happens when the pattern and text are s
 
 Quick and Practical: Boyer-Moore often does the job faster than other methods, like the basic brute force way or fancier methods like Knuth-Morris-Pratt. In real-life situations, if you want something done fast, Boyer-Moore is usually the best option.
 
+Comparatively speaking, The Boyer Moore algorithm is at it's maximum efficiency when it's two heuristics is impletmented, the **Good Match Table** and **Good Suffix Rule** as these two heuristics independently assist the algorithm in finding a specific amount to **skip** indexes in a long string, preventing unnecessary comparison loops between substrings and the pattern that we wish to locate.
+this is why in terms of efficiency it is superior to the KMP algorithm & the Brute Force algorithm
+
 Easy to Understand: This algorithm isn't too complicated to learn and use. That's great for students and developers because it means we can get things done without getting stuck on complicated concepts.
 
-Getting Ready Ahead of Time: Boyer-Moore gets prepared before the actual search, like packing your bags before a trip. It spends some time upfront making helpful tables, which make the search faster, even when dealing with big patterns.
 
 Adapts Well: This algorithm can handle different situations nicely. Even if our pattern has lots of the same letters or it's a bit long, Boyer-Moore keeps working reasonably fast without slowing down too much.
 
