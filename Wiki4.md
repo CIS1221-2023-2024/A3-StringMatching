@@ -25,7 +25,7 @@ Pattern : VCOKBJCBVOKNJPIOBVKJPOGHKUPOYTKPOGMBVKLCMNFLGKHKPORTYMHNKLFBMNLKGHMJPO
 
 
 ### Result :
-For C#, manually programming the variables to contain the long string doesn't really seem to have a maximum length. The Input String was at some point, exceeding **25,000 Characters** and was still able to run the comparison, completing it at **12 Milliseconds** 
+For C#, manually programming the variables to contain the long string doesn't really seem to have a maximum length. By continuously copying and pasting the input string, it was at some point, exceeding **25,000 Characters** and was still able to run the comparison, completing it at **12 Milliseconds** 
 
 
 
