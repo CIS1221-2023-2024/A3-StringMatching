@@ -47,7 +47,7 @@ string length.
 #### Python
 
 - At 2560 Characters of the Long String & 726 Characters of the pattern: **Maximum Memory at ~47.6MB, Completion at 1.11 seconds**
-- 
+- At
 
 
 
