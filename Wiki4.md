@@ -11,6 +11,7 @@ an even larger input when needed
 
 **C# Console Input Limit : 256 Characters in Console, "Endless" in IDE**
 
+
 **Python Console Input Limit: "Endless" in Console, "Endless" in IDE**
 
 Thus for any other tests, the C# Program will have to require a GUI to take in a longer input or will have to be programmed manually in it's source code.
@@ -33,13 +34,20 @@ The initial character count of the Input is about **2560 Characters** whilst the
 manually programming the variables to contain the long string doesn't really seem to have a maximum length. By continuously copying and pasting the input string, it was at some point, exceeding **25,000 Characters** and was still able to run the comparison. 
 
 We will be copying and pasting our inputs continuously, varying the character count and seeing hte result.
-At 2560 Characters of the Long String & 726 Characters of the pattern : **Maximum Memory at 17MB, Completion at 1134ms**
-At 24210 Characters of the Long String & 500 Characters of the pattern: **Maximum Memory at 17 MB, after 146ms Index out of bounds error was given**
+
+- At 2560 Characters of the Long String & 726 Characters of the pattern : **Maximum Memory at 17MB, Completion at 1.13 seconds**
+
+- At 24210 Characters of the Long String & 500 Characters of the pattern: **Maximum Memory at 17 MB, after 146ms Index out of bounds error was given**
 
 The C# Program of Boyer Moore allows for an undefined number of characters with the input string that we are to find a pattern within, but 
 does not allow the Pattern to be found, to exceed **500 Characters**. This is most likely due to the two heuristics causing the algorithm to skip a large amount, exceeding that of the 
 string length.
 
+
+#### Python
+
+- At 2560 Characters of the Long String & 726 Characters of the pattern: **Maximum Memory at ~47.6MB, Completion at 1.11 seconds**
+- 
 
 
 
