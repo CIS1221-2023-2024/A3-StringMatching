@@ -7,6 +7,7 @@ Given that Both algorithms are run using the provided Windows Console. The windo
 an even larger input when needed
 
 ** C# Console Input Limit : 256 Characters **
+
 ** Python Console Input Limit: "Endless" but rather depends on memory availiable **
 
 Thus for any other tests, the C# Program will have to require a GUI to take in a longer input or will have to be programmed manually in it's source code.
