@@ -86,6 +86,9 @@ These heuristics make Boyer-Moore a go-to choice for efficient text searching in
 1) If a mismatch occurs:
 
 - If the mismatched character previously appears in the pattern, align the last occurrence of that character in the pattern with its first occurrence in the pattern.
+This follows roughly the same principle of the first case, just a bit more abstracted, the algorithm takes notice of the first substring of our suffix (the tailing characters before the left most character of the comparison loop) which actually managed to satisfy a match, and tries to find within the pattern, a **second** corresponding substring only this time, with a different preceding character, as it knows if it finds the same substring with the same preceding character, it will be a useless jump, and could even cause an infinite loop in certain cases.
+
+
 - If the mismatched character does not have a previous occurrence in the pattern, find the longest suffix that matches a substring of the pattern's prefix and align it in the text.
 
 2) Choose the larger shift value between the two cases to skip more characters in the text and reduce comparisons.
