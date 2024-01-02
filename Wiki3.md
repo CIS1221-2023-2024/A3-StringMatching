@@ -60,7 +60,8 @@ Through a graph representation, we may see that with C#, The Boyer Moore Algorit
 
 
 
-Note: This contradiction of Boyer Moore supposedly being more efficient is most likely due to the inefficient structure of the solutions, where code simplification and optimization likely exists, just not known.
+Note: This contradiction of Boyer Moore supposedly being more efficient is most likely due to the inefficient structure of our C# solution, where code simplification and optimization likely exists, just not known.
+
 **In a given sample code of Boyer Moore taken from https://www.geeksforgeeks.org/boyer-moore-algorithm-for-pattern-searching/ the Algorithm actually ran on average, 1 Millisecond in C#, proving that given the proper implementation, takes way less time than KMP**
 
 
