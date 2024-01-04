@@ -64,6 +64,13 @@ Pattern = ATA
 Here we can notice that there's actually 2 instances of ATA starting at index 6 and 8.
 
 
+### Result:
+#### C#
+CSharp actually ignores the first occurance of the pattern and instead only pays attention to the last occurance if the substring ATATA is read and our pattern is ATA.
+
+
+
+
 
 
 
