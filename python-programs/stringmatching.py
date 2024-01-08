@@ -1,4 +1,5 @@
 # This Function to create a bad character table for Boyer-Moore
+
 def bad_character_table(pattern):
     # Empty dictionary to store the character positions
     table = {}
@@ -18,10 +19,11 @@ def is_prefix(pattern, p):
     # by finding the difference between the total length of the word (pattern_length) and a starting position (p)
     pattern_length = len(pattern)
     suffix_length = pattern_length - p
+    
     for i in range(suffix_length):
-        # It checks if the character at a position i in the pattern (the whole word)
-        # is different from the character at the position p + i in the substring
-        # If there's any difference, it indicates that the substring is not identical to the beginning of the pattern
+        '''It checks if the character at a position i in the pattern (the whole word) is different from the character at the position p + i in the substring
+        If there's any difference, it indicates that the substring is not identical to the beginning of the pattern'''
+        
         if pattern[i] != pattern[p + i]:
             # It stops the loop and returns False. This indicates that the substring is not a prefix of the pattern
             return False
@@ -49,23 +51,24 @@ def good_suffix_table(pattern):
     suffix_table = [0] * pattern_length
     last_prefix_position = pattern_length
 
-    """                                     Calculate suffix table based on pattern prefixes
-               The loop iterates backward through the pattern, starting from the second-to-last character.
+    """ Calculate suffix table based on pattern prefixes. The loop iterates backward through the pattern, starting from the second-to-last character.
         It checks if the substring is a prefix using the is_prefix function and updates last_prefix_position accordingly.
-            Th e shift value is calculated and stored in suffix_table at the appropriate position.
+        The shift value is calculated and stored in suffix_table at the appropriate position.
             """
 
     # Calculate suffix table based on pattern prefixes
     for i in range(pattern_length - 1, -1, -1):
         '''
-                                            (( Notes about the what each verable represent ))
-                 suffix_length(pattern, i) calculates the length of the longest suffix of the pattern that matches the substring
-                The j value represents the position where a mismatch occurs.
-
-                '''
+        (( Notes about the what each variable represents))
+        suffix_length(pattern, i) calculates the length of the longest suffix of the pattern that matches the substring
+        The j value represents the position where a mismatch occurs.
+        '''
+        
         if is_prefix(pattern, i + 1):
             last_prefix_position = i + 1
+        
         suffix_table[pattern_length - 1 - i] = last_prefix_position - i + pattern_length - 1
+    
     # Calculate suffix table based on pattern suffixes
     for i in range(pattern_length - 1):
         len_suffix = suffix_length(pattern, i)
@@ -76,15 +79,16 @@ def good_suffix_table(pattern):
 
 
 # This function is the Boyer-Moore search algorithm
-"""             deap Explination on the purpose of the step of creating suffix_table in position J
-               we calculate how far apart i and j are, and add the length of the pattern -1 to it.
+"""Explanation on the purpose of the step of creating suffix_table in position J.
+We calculate how far apart i and j are, and add the length of the pattern -1 to it.
 Then, we compare this calculated value with the current value at suffix_table[j] and choose the smaller of the two to store in suffix_table[j].
-         This way, we keep track of the minimum shift needed for each mismatch position in the pattern."""
+This way, we keep track of the minimum shift needed for each mismatch position in the pattern."""
 
 
 def boyer_moore(text, pattern):
     pattern_length = len(pattern)
     text_length = len(text)
+    
     # Create bad character and good suffix tables
     bad_char_table = bad_character_table(pattern)
     suffix_table = good_suffix_table(pattern)
@@ -93,6 +97,7 @@ def boyer_moore(text, pattern):
     found_indices = []
     while i <= text_length - pattern_length:
         j = pattern_length - 1
+        
         # Comparing the pattern characters with text characters
         while j >= 0 and pattern[j] == text[i + j]:
             j -= 1
