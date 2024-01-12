@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
  
 
 
@@ -8,12 +9,17 @@ using System.Linq;
 namespace BoyerMoore{
     class Program{
         public static void Main(string[] args){
+        
+
+
+
             Console.WriteLine("Enter a long text");
             string userText = Console.ReadLine();
             Console.WriteLine("Enter a word/pattern to search");
             string userPattern = Console.ReadLine();
-            
+
             BoyerMoore(userText, userPattern);
+
 
         }
 
@@ -46,7 +52,6 @@ namespace BoyerMoore{
         }
         
         static List<int> GoodSuffixTable(string pattern){
-
             int pLength = pattern.Length; // Length of the pattern
             int lastPrefixIndex = pLength - 1; // Recording the last prefix that was recorded by its index.
 
@@ -58,32 +63,24 @@ namespace BoyerMoore{
 
             }
             
-
-            
             // First Case -- A Matching Prefix found within the Pattern (This prefix equals our Suffix)
             for(int i = pLength - 1; i >= 0; i--){ // Start from the right most character 
                 
                 string tempSuffix = pattern.Substring(i + 1); // Generate a suffix 
 
 
-                for(int x = 0; x < pLength - tempSuffix.Length - 1; x++){ // Find a Matching prefix
+                for(int x = 0; x <= pLength - tempSuffix.Length - 1; x++){ // Find a Matching prefix
                     string tempPrefix = pattern.Substring(0, x); // Generate a prefix
-
-                    
                     if(tempSuffix == tempPrefix){ // if our Prefix is matching our suffix
-
                         lastPrefixIndex = i + 1; // Record the Index that our suffix starts from 
                     }
                 }
-
                 goodSuffixTable[i] = lastPrefixIndex + (pattern.Length - 1 - i);
-             
-
+            
             }
 
             // Second Case -- A Tail of the suffix occurs in the pattern before the suffix itself.
             // Example : our Pattern is ABDATCATA, and our suffix is ATA. the Tail of it is TA. and TA appears at index 3.
-
 
             // (Credits yet again to Github.com/dwnusbaum for the 2nd bit)
             for(int i = 1; i < pLength - 1; i++){ // We will skip i = 0 because it returns nothing useful.
@@ -105,9 +102,11 @@ namespace BoyerMoore{
             Dictionary<string, int> badMatchTable = new Dictionary<string, int>(); // Create Dictionary for Bad Match Table
             int pLength = pattern.Length;
             int tLength = text.Length;
-            bool found = false; // This is to show that at least, something was found. 
+            bool found = false;
+
 
             List<int> GoodSuffix = GoodSuffixTable(pattern); // Generate a good suffix table
+            // Console.WriteLine("Current Memory Usage : " + (memoryUsage.WorkingSet64 / (1024 * 1024)));
 
 
             // # Creation of Bad Match Table
@@ -115,12 +114,10 @@ namespace BoyerMoore{
 
                 if(!(badMatchTable.ContainsKey(pattern[i].ToString()))){ // if character is not already in Dictionary
                     
-                    // give key value that is the largest between 1 and the formula patternLength - charIndex - 1
-                    int value = Math.Max(1, (pattern.Length - i - 1)); 
+                    // give key value that follows the formula:  patternLength - charIndex - 1
+                    int value = pattern.Length - i - 1; 
                     // add Character to bad match table with it's key value given.
                     badMatchTable[pattern[i].ToString()] =  value; 
-    
-
                 }else{ // If there are duplicate letters
                     badMatchTable[pattern[i].ToString()] = Math.Max(1, pattern.Length - i - 1); // Update the respective key value that is a duplicate.
                 }
@@ -131,17 +128,17 @@ namespace BoyerMoore{
             
             
             // For Testing Purposes
-            Console.WriteLine("----- Bad Match Table------");
-            foreach(var kvp in badMatchTable){
-                Console.WriteLine(kvp);
-            }
-            Console.WriteLine("-----------");
+            // Console.WriteLine("----- Bad Match Table------");
+            // foreach(var kvp in badMatchTable){
+            //     Console.WriteLine(kvp);
+            // }
+            // Console.WriteLine("-----------");
 
-            Console.WriteLine("---- Good Suffix Table -----");
-            foreach(var kvp in GoodSuffix){
-                Console.WriteLine(kvp);
-            }
-            Console.WriteLine("-----------");
+            // Console.WriteLine("---- Good Suffix Table -----");
+            // foreach(var kvp in GoodSuffix){
+            //     Console.WriteLine(kvp);
+            // }
+            // Console.WriteLine("-----------");
 
 
 
@@ -152,7 +149,9 @@ namespace BoyerMoore{
 
             while(index < tLength){ // Iterate until index reaches tLength
 
-                
+
+
+                // Console.WriteLine("Current Memory Usage : " + (memoryUsage.WorkingSet64 / (1024 * 1024)));   
                 if(text[index] == pattern[lastElement]){ // If the right-most character matches with a character
 
                     int l = lastElement; // iteration counter for character by character comparison.
@@ -162,11 +161,14 @@ namespace BoyerMoore{
                         if(text[index] != pattern[l]){ // If characters in pattern & text don't match.
                         
                             // Check from Bad Match Table how much to skip 
+
+
                            if(badMatchTable.ContainsKey(text[index].ToString())){ // Check if mismatched character in text exists on table 
                                int skip = Math.Max(badMatchTable[text[index].ToString()], GoodSuffix[l]); // Choose the largest skip possible.
                                index = index + skip; // Skip respective positions of character
                                break;
                            }else{
+                              
                               int skip = Math.Max(badMatchTable["*"], GoodSuffix[l]); // Choose largest skip possible
                               index = index + skip; // Skip entire pattern length.
                               break;
@@ -198,12 +200,9 @@ namespace BoyerMoore{
                 
             }
             if(!found){
-                Console.WriteLine("The string in question was not found.");
+                Console.WriteLine("The string inputted was not found.");
             }
 
         }
     }
-
-
-
 }
