@@ -72,13 +72,10 @@ namespace BoyerMoore{
                 for(int x = 0; x < pLength - tempSuffix.Length - 1; x++){ // Find a Matching prefix
                     string tempPrefix = pattern.Substring(0, x); // Generate a prefix
                     if(tempSuffix == tempPrefix){ // if our Prefix is matching our suffix
-                        Console.WriteLine("last prefix Index updated to" + (i + 1));
                         lastPrefixIndex = i + 1; // Record the Index that our suffix starts from 
                     }
                     
                 }
-                Console.WriteLine("Outputting last prefix index " + lastPrefixIndex + " adding this with " + (pattern.Length - 1 + i    ));
-                Console.WriteLine("Final Suffix Value " + (lastPrefixIndex + (pattern.Length - 1 - i)));
                 goodSuffixTable[i] = lastPrefixIndex + (pattern.Length - 1 - i);
             
             }
