@@ -72,9 +72,13 @@ namespace BoyerMoore{
                 for(int x = 0; x < pLength - tempSuffix.Length - 1; x++){ // Find a Matching prefix
                     string tempPrefix = pattern.Substring(0, x); // Generate a prefix
                     if(tempSuffix == tempPrefix){ // if our Prefix is matching our suffix
+                        Console.WriteLine("last prefix Index updated to" + (i + 1));
                         lastPrefixIndex = i + 1; // Record the Index that our suffix starts from 
                     }
+                    
                 }
+                Console.WriteLine("Outputting last prefix index " + lastPrefixIndex + " adding this with " + (pattern.Length - 1 + i    ));
+                Console.WriteLine("Final Suffix Value " + (lastPrefixIndex + (pattern.Length - 1 - i)));
                 goodSuffixTable[i] = lastPrefixIndex + (pattern.Length - 1 - i);
             
             }
@@ -83,7 +87,7 @@ namespace BoyerMoore{
             // Example : our Pattern is ABDATCATA, and our suffix is ATA. the Tail of it is TA. and TA appears at index 3.
 
             // (Credits yet again to Github.com/dwnusbaum for the 2nd bit)
-            for(int i = 1; i < pLength - 1; i++){ // We will skip i = 0 because it returns nothing useful.
+            for(int i = 0; i < pLength - 1; i++){ 
  
                 int suffixLength = GetSuffixLength(pattern, i); // Gets the Suffix Length for each suffix
                 
