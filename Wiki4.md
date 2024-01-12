@@ -66,9 +66,10 @@ Here we can notice that there's actually 2 instances of ATA starting at index 6 
 
 ### Result:
 #### C#
-CSharp actually ignores the first occurance of the pattern and instead only pays attention to the last occurance if the substring ATATA is read and our pattern is ATA.
+CSharp actually ignores the left most occurance of the pattern and instead only pays attention to the right most occurance if the substring ATATA is read and our pattern is ATA.
 
-
+#### Python 
+Python does the complete opposite, ignoring the right most occurance of the pattern ATA in ATATA and instead only records the left most occurance.
 
 
 
