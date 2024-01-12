@@ -128,7 +128,17 @@ namespace BoyerMoore{
             
             
             // For Testing Purposes
+            Console.WriteLine("----- Bad Match Table------");
+            foreach(var kvp in badMatchTable){
+                Console.WriteLine(kvp);
+            }
+            Console.WriteLine("-----------");
 
+            Console.WriteLine("---- Good Suffix Table -----");
+            foreach(var kvp in GoodSuffix){
+                Console.WriteLine(kvp);
+            }
+            Console.WriteLine("-----------");
 
 
 
