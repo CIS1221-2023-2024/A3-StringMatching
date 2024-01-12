@@ -69,7 +69,7 @@ namespace BoyerMoore{
                 string tempSuffix = pattern.Substring(i + 1); // Generate a suffix 
 
 
-                for(int x = 0; x <= pLength - tempSuffix.Length - 1; x++){ // Find a Matching prefix
+                for(int x = 0; x < pLength - tempSuffix.Length - 1; x++){ // Find a Matching prefix
                     string tempPrefix = pattern.Substring(0, x); // Generate a prefix
                     if(tempSuffix == tempPrefix){ // if our Prefix is matching our suffix
                         lastPrefixIndex = i + 1; // Record the Index that our suffix starts from 
@@ -128,17 +128,7 @@ namespace BoyerMoore{
             
             
             // For Testing Purposes
-            // Console.WriteLine("----- Bad Match Table------");
-            // foreach(var kvp in badMatchTable){
-            //     Console.WriteLine(kvp);
-            // }
-            // Console.WriteLine("-----------");
 
-            // Console.WriteLine("---- Good Suffix Table -----");
-            // foreach(var kvp in GoodSuffix){
-            //     Console.WriteLine(kvp);
-            // }
-            // Console.WriteLine("-----------");
 
 
 
