@@ -9,16 +9,19 @@ using System.Diagnostics;
 namespace BoyerMoore{
     class Program{
         public static void Main(string[] args){
+            Stopwatch stopwatch = new Stopwatch();
         
-
-
-
             Console.WriteLine("Enter a long text");
-            string userText = Console.ReadLine();
-            Console.WriteLine("Enter a word/pattern to search");
-            string userPattern = Console.ReadLine();
+            string userText =  Console.ReadLine();
 
+            Console.WriteLine("Enter a word/pattern to search");
+            string userPattern = Console.ReadLine();    
+            stopwatch.Start();
             BoyerMoore(userText, userPattern);
+            stopwatch.Stop();
+
+            long elapsedTime = stopwatch.ElapsedMilliseconds;                                                                                                                                
+            Console.WriteLine(elapsedTime);
 
 
         }
@@ -64,7 +67,7 @@ namespace BoyerMoore{
             }
             
             // First Case -- A Matching Prefix found within the Pattern (This prefix equals our Suffix)
-            for(int i = pLength - 1; i >= 0; i--){ // Start from the right most character 
+            for(int i = pLength - 1; i > 0; i--){ // Start from the right most character 
                 
                 string tempSuffix = pattern.Substring(i + 1); // Generate a suffix 
 
