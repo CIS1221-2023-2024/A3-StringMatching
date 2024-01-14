@@ -13,7 +13,37 @@ We will be documenting the execution time the boyer moore algorithm takes throug
 
 ## C# Boyer Moore
 A pre-existing library  (**System.Diagonistics**) providing the appropriate functions in measuring execution time will be used for this documentation.
-![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/e906969e-af93-4bed-95b5-9b741156d07d)
+```C#
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Diagnostics;
+
+namespace BoyerMoore{
+    class Program{
+        public static void Main(string[] args){
+
+            Stopwatch stopwatch = new Stopwatch();
+        
+
+
+
+            Console.WriteLine("Enter a long text");
+            string userText = Console.ReadLine();
+            Console.WriteLine("Enter a word/pattern to search");
+            string userPattern = Console.ReadLine();
+
+            stopwatch.Start();
+            BoyerMoore(userText, userPattern);
+            stopwatch.Stop();
+
+            TimeSpan elapsedTime = stopwatch.Elapsed;
+
+            Console.WriteLine("Program finished in " + elapsedTime + "ms");
+
+
+        }
+```
 
 
 ```
