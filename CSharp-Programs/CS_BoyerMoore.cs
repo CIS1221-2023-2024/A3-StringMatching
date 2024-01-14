@@ -9,19 +9,14 @@ using System.Diagnostics;
 namespace BoyerMoore{
     class Program{
         public static void Main(string[] args){
-            Stopwatch stopwatch = new Stopwatch();
+
         
             Console.WriteLine("Enter a long text");
             string userText =  Console.ReadLine();
 
             Console.WriteLine("Enter a word/pattern to search");
             string userPattern = Console.ReadLine();    
-            stopwatch.Start();
             BoyerMoore(userText, userPattern);
-            stopwatch.Stop();
-
-            long elapsedTime = stopwatch.ElapsedMilliseconds;                                                                                                                                
-            Console.WriteLine(elapsedTime);
 
 
         }
@@ -110,7 +105,7 @@ namespace BoyerMoore{
 
 
             List<int> GoodSuffix = GoodSuffixTable(pattern); // Generate a good suffix table
-            // Console.WriteLine("Current Memory Usage : " + (memoryUsage.WorkingSet64 / (1024 * 1024)));
+            
 
 
             // # Creation of Bad Match Table
@@ -155,7 +150,7 @@ namespace BoyerMoore{
 
 
 
-                // Console.WriteLine("Current Memory Usage : " + (memoryUsage.WorkingSet64 / (1024 * 1024)));   
+ 
                 if(text[index] == pattern[lastElement]){ // If the right-most character matches with a character
 
                     int l = lastElement; // iteration counter for character by character comparison.
