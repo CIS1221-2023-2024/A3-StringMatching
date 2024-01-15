@@ -1,7 +1,7 @@
 # Boyer-Moore String Matching Project
 
 # The Wiki Pages:
-- [Wiki Page 1](Wiki1.md)
+- [Introduction](Introduction To String Matching.md)
 - [Wiki Page 2](Wiki2.md)
 - [Wiki Page 3](Wiki3.md)
 - [Wiki Page 4](Wiki4.md)
