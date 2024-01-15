@@ -1,10 +1,10 @@
 # Boyer-Moore String Matching Project
 
 # The Wiki Pages:
-- [Introduction](Introduction To String Matching.md)
-- [Wiki Page 2](Wiki2.md)
-- [Wiki Page 3](Wiki3.md)
-- [Wiki Page 4](Wiki4.md)
+- [Introduction To String Matching](Wiki1.md)
+- [Boyer Moore Specifications](Wiki2.md)
+- [Benchmarking Results](Wiki3.md)
+- [Edge Cases & Limitations](Wiki4.md)
 
 # Introduction
 This project implements the Boyer-Moore algorithm for string matching, demonstrating its efficiency and effectiveness in text search. The implementation is provided in both Python and C# to showcase the algorithm's application in different programming environments.
