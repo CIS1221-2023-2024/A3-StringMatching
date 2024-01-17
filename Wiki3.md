@@ -37,7 +37,7 @@ namespace BoyerMoore{
             BoyerMoore(userText, userPattern);
             stopwatch.Stop();
 
-            TimeSpan elapsedTime = stopwatch.Elapsed;
+            TimeSpan elapsedTime = stopwatch.ElapsedMilliseconds;
 
             Console.WriteLine("Program finished in " + elapsedTime + "ms");
 
@@ -47,13 +47,26 @@ namespace BoyerMoore{
 
 
 ```
-ExampleInput = ABDBADABTACADDATABWADADTABADBADTATAOZLXCJADATAQWUEUYIQAYHASUIDYAHSIUDYUIAYADTAFHZXCHKJZXHFKJADTAIJIOJOIJIOJOIADTA
-Pattern = ADTA
+ExampleInput = This is a sample text that will contain an explanation of the boyer moore algorithm, within this sample text there will be a "word" word. Which will be deliberately emphasized as this is also going to be an input example for the boyer moore string matching algorithm in order to find this word.
+
+
+The boyer moore algorithm is said to be the most effective and most efficient string matching algorithm when it comes to finding specific words. It makes use of two certain heuristics in order to efficiently find that said specific word by having them allow the algorithm to skip a certain amount of indexes in the long paragrah, sentence, etc in order to reach a match with that word. 
+
+The two heuristics in question are the good suffix table heuristic and the bad character table heuristic. The bad character heuristic works mainly by the use of a mathematically defined formula which applies to any word inputted that is to be searched. This formula generates values for all the unique letters of the word for the algorithm to use to skip an amount of characters in the long string.
+
+
+The good suffix table heuristic is a bit more counter intuitive and may be quite a challenging concept for the average programmer. It works by 2 Rules. The first rule being that if in a word, a right most suffix is found to be matching a prefix (the left most prefix) and they both don't have the same preceding character (e.g ABA & CBA) the distance between them will be recorded. The second rule being that if in a word, the first rule cannot be applied, and that either a matching prefix has the same preceding character as the suffix, or there is no matching prefix at all, then their matching tails will have to be taken into consideration instead for the word.
+
+
+
+Pattern = word
 ```
 
 The pattern occurs quite frequently here, just to test further the execution time for when there are several words that match the pattern, in order to maximize the needed loops to execute relevant checks.
 
-Given the possibile inconsistencies in results, we will also be taking the execution time twice and averaging them out.
+The Unfortunate part here is that C# being run in the console does not allow us to insert the entire text here given the console prompt when running CS files gives us a limit of only 256 Characters as an input, so we have to directly insert the entire text as a string variable.
+
+Given the possibile inconsistencies in results, we will also be taking the execution time twice and averaging them out.    
 
 **Note: Execution Times may vary depending on the system it is being executed on and also not to mention that our Implementation of boyer moore runs with the two heuristics, which add more complexity 
 which over all may also impact the performance.**
@@ -61,45 +74,67 @@ which over all may also impact the performance.**
 
 
 ### 1st Test -- C#
- ![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/f75c21b5-8d6e-4a56-880b-142346fb8a78)
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/0f900394-c7bc-4f40-b917-8a7e8e571531)
 
 
 
-Recorded Time: **3 Milliseconds**
+
+Recorded Time: **11 Milliseconds**
 ### 2nd Test -- C#
-![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/62e94d55-9597-4fcf-b68e-781222fb893c)
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/deab71e8-e6f0-4303-8ef6-cf7b5fa2b912)
 
 
 
 
-Recorded Time: **3 Milliseconds**
 
-**Overall Average: 3 Milliseconds**
+Recorded Time: **9 Milliseconds**
+
+**Overall Average: 10 Milliseconds**
 
 
 Other Algorithms like the **KMP (Knuth-Morris Pratt)** and **Naive Algorithm** have been run as well with the same input example to document the time difference between the three algorithms.
 
-**KMP Average Time: 2.5 Milliseconds**
+**KMP Average Time C#: 10.2 Milliseconds**
 
-**Naive Algorithm: 1.02 Milliseconds**
+**Naive Algorithm C#: 12.5 Milliseconds**
 
-Through a graph representation, we may see that with C#, The Boyer Moore Algorithm actually took **much more time** than both the two algorithms.
+Through a graph representation, we may see that with C#, The Boyer moore algorithm took less time than the Naive Algorithm, succeeded **barely** faster than the KMP algorithm. 
 
-![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/7909f4f3-d6a1-4d27-98f7-bf499427ff3e)
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/d366c250-04ab-415c-b168-0271ba9126a1)
+
+**Statistics: Our C# implementation of the boyer moore algorithm is barely faster than the KMP C# algorithm and about 25% faster than the Naive C# algorithm**
 
 
+** Important To Note: Our own Implementation of the C# algorithm of Boyer Moore may include inefficient practices which may overall influence the actual execution time of the algorithm.**
 
 
-Note: This contradiction of Boyer Moore supposedly being more efficient is most likely due to the inefficient structure of our C# solution, where code simplification and optimization likely exists, just not known.
-
-**In a given sample code of Boyer Moore taken from https://www.geeksforgeeks.org/boyer-moore-algorithm-for-pattern-searching/ the Algorithm actually ran on average, 1 Millisecond in C#, proving that given the proper implementation, takes way less time than KMP**
 
 
 ## Python Boyer Moore
 We will also be using a pre-existing library to document and monitor the execution time for the python file of the Boyer Moore Algorithm as well as comparing the execution time of this algorithm with the same other ones (KMP & Naive)
 
 
-![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/8673fea2-070f-40f0-a0e2-abf1bc68786f)
+```python
+    if not text:
+        print("You didn't input any text.")
+    elif not pattern:
+        print("You didn't input any pattern.")
+        
+    else:
+        # Call the Boyer-Moore search algorithm
+        start = time.time()
+        found_indices = boyer_moore(text, pattern)
+        end = time.time()
+
+        if found_indices:
+            print("Pattern found at indices:", found_indices)
+
+        if not found_indices:
+            print('Pattern is not matching in the text')
+
+        print(f"{(end - start) * 1000} Milliseconds")
+
+```
 
 **Note:** The time difference calculated in the end is multiplied by 1000 to convert it into **milliseconds**
 ### 1st Test -- Python
@@ -117,15 +152,21 @@ Recorded Time: **0.5 Milliseconds**
 
 And of course, we've run the other algorithms in the respective python language as well and collected their average:
 
-**KMP Average Time: 1.51 Milliseconds**
+**KMP Average Time Python: 9.50 Milliseconds**
 
-**Naive Average Time: 1.53 Milliseconds** 
+**Naive Average Time Python : 13.85 Milliseconds** 
 
-![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/ee41fd76-0345-414d-b502-b8f9c631b594)
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/6fd65630-5c49-4375-b7de-5119244b45f5)
+
+
+**Statistics: Our Python implementation of Boyer Moore Took was incredibly fast, taking up less than a millisecond to execute, making it comparatively **1,900%** Faster than the KMP Python implemented algorithm and **2,770%** faster than the Naive Python implemented algorithm**
+
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/0c2453a5-89a5-4c1d-83fc-8e9102e6821f)
+
+
 
 ## Conclusion
-Thus Overall, in Comparison Python was capable at running our implemented algorithms of Boyer Moore roughly **600%** faster.
-In a general comparison however, with the online source of the C# implementation on Boyer Moore, Python would've managed to run at only **200%** faster speeds.
+Thus Overall, in Comparison Python was capable at running our implemented algorithms of Boyer Moore roughly **2,000%** faster than C# with our boyer moore implementation
 
 
 
