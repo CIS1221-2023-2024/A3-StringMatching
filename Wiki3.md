@@ -296,19 +296,32 @@ And Thus, we will be recording the Average CPU Usage **Three** Times on the C# p
 ![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/55fe6c08-347b-4650-8dbd-2bf63cb54e89)
 
 
-So the Overall average CPU usage for the C# implementation of Boyer Moore is roughly **2.10**
+So the Overall average CPU usage for the C# implementation of Boyer Moore is roughly **2.10%**
 
 
 ## Python
 For python we had to resort to a third party package named **Psutil** which has a similar function to the Systems.Threading method. Which also records data of CPU usage in 1 second.
 
 ```python
-        found_indices = boyer_moore(text, pattern)
-        finalCpuUsage = psutil.cpu_percent(interval=1) # Can be called after the boyer moore method is called (Data collected at an interval of 1 second)
+found_indices = boyer_moore(text, pattern)
+finalCpuUsage = psutil.cpu_percent(interval=1) # Can be called after the boyer moore method is called (Data collected at an interval of 1 second)
 
-        print(f"Final CPU Usage {finalCpuUsage}%")
+print(f"Final CPU Usage {finalCpuUsage}%")
 
 ```
+
+### Call 1
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/e971c4b5-a141-4d6c-b4ac-d75052b96e3f)
+
+### Call 2
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/56159054-150c-4213-8f5a-3126ef276edf)
+
+### Call 3
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/6c20a918-1f0b-4735-8727-26c09a2f5c5e)
+
+Therefore, overall average CPU usage for the Python implementation of Boyer Moore is Roughly **0.73%**
+
+
 
 
 
