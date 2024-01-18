@@ -84,6 +84,47 @@ Python does the complete opposite, ignoring the right most occurance of the patt
 
 
 
+## Edge Case 4 - Case Sensitivity
+Here we will be testing if whether or not the boyer moore string matching algorithm is capable of differentiating between strings and patterns which are in upper case or lower case.
+Of course, given that by default, a letter with its capitalized counterpart are recognized as two different unicode characters thus we'll keep the algorithm to be case sensitive.
+
+This also implies that the good suffix table and bad match table would create individual values for both a letter and it's said uppercase counterpart.
+
+For this case, we will be utilizing the following inputs:
+
+```
+Input = This will be a long sentence with the word "this". Our input will be the pattern "This" with a capital T. This should only give us the indexes of all words "this" that have only a capital T.
+"This" that "That" and this...
+
+Pattern = This
+2nd Pattern = this 
+```
+
+### Result
+### C# 
+C# was able to return just only the instances of which the word "This" starts with a capital T and as well as the word "this" that starts with a non-capital t, in separate tests.
+Therefore, The C# Algorithm is indeed case sensitive.
+
+### Results of finding "This" 
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/45fe397f-e3d4-445d-bca7-1de6a3b1dd88)
+
+### Results of finding "this" 
+
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/64259746-3fbd-4ce7-8dee-36ce4abfdf17)
+
+
+
+### Python
+### Results of finding "This"
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/bcaab78f-ca56-4591-82e0-f49837a817f3)
+
+### Results of finding "this"
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/12edfcd4-acec-4e0c-8a71-4c3c36a86b8f)
+
+This shows that both the python and C# Implementation of the boyer moore algorithm retain a case sensitivity feature within their functionality as they returned the same indexes of occurances. This is primarily due to the reason that by unicode, T and t and all other letters and their uppercase counterparts are not "the same" character. If a non-case sensitive setting were to be made, there'd have to be functions such as **.lower()** or **ToLower()** used in the generation of both tables from both heuristics.
+
+
+
 
 
 
