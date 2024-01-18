@@ -125,6 +125,18 @@ This shows that both the python and C# Implementation of the boyer moore algorit
 
 
 
+# Overall Conclusion - Python VS C#
+**Based on our test results** whether you prefer C# or Python to develop the Boyer Moore Algorithm is entirely up for preference, Objectively speaking Python has indeed run faster than C# however this may be entirely due to not having a more properly, well designed, efficient implementation of the algorithm in question in C# whereas Python had many work arounds which simplified code structure and thus allowed it to be more efficient, thus there was a huge nuance in execution time. 
+
+this becomes more the case since we have found out with an online C# Sample of the B_Moore algorithm that **Generally, Python and C# would have had little to no difference in execution time with the algorithm**
+
+When it came to memory C# did objectively utilize fewer memory than Python, but the difference between the two was very low to the point that with today's standards, memory would have been a little to no concern for a common user with the two languages in comparison.
+
+The two algorithms executed as expected leaving no fundamental differences between the languages in how they came to implement the feature, the only difference would be convenience if a command prompt were to be utilized instead of a proper GUI given Python has allowed us to input as many characters as we wished, whereas C# only allowed just a number of characters. 
+
+Although, overall, It can be concluded that Both Languages are well suited for tackling the algorithm.
+
+
 
 
 
