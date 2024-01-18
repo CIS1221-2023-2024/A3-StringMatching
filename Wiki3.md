@@ -248,6 +248,9 @@ The C# Implementation of Boyer Moore takes up **~69%** Less memory than the Pyth
 
 Here we will be measuring the CPU usage that both the programming languages utilize when running the Boyer Moore algorithm. We will be using certain libraries within C# and Python, specifically for Python **Psutil** and for C# **System.Threading**
 
+**Note: CPU Usage measurings can be affected by various factors such as the type of CPU we are utilizing and the background applications that could have an impact on CPU performance**
+**The CPU used in this benchmark is an I7-8750H**
+
 To measure CPU Usage we will also be utilizing the following inputs (The same inputs we used to benchmark the excecution times)
 ```
 Input = This is a sample text that will contain an explanation of the boyer moore algorithm, within this sample text there will be a "word" word. Which will be deliberately emphasized as this is also going to be an input example for the boyer moore string matching algorithm in order to find this word.The boyer moore algorithm is said to be the most effective and most efficient string matching algorithm when it comes to finding specific words. It makes use of two certain heuristics in order to efficiently find that said specific word by having them allow the algorithm to skip a certain amount of indexes in the long paragrah, sentence, etc in order to reach a match with that word. The two heuristics in question are the good suffix table heuristic and the bad character table heuristic. The bad character heuristic works mainly by the use of a mathematically defined formula which applies to any word inputted that is to be searched. This formula generates values for all the unique letters of the word for the algorithm to use to skip an amount of characters in the long string.The good suffix table heuristic is a bit more counter intuitive and may be quite a challenging concept for the average
@@ -287,13 +290,17 @@ namespace BoyerMoore{
 And Thus, we will be recording the Average CPU Usage **Three** Times on the C# program and check the overall average
 
 ### Call 1
-![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/48814d8d-c681-4dd3-bf72-38c05b542b17)
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/41903e84-8619-4e6e-b4bc-d77a0eff8e40)
+
 
 ### Call 2
-![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/236c3e8a-3636-4ee1-a57c-b19cbe2ea926)
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/111c8047-f6b4-4dc0-8bab-aa978ce700db)
+
+
 
 ### Call 3
-![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/55fe6c08-347b-4650-8dbd-2bf63cb54e89)
+![image](https://github.com/CIS1221-2023-2024/A3-StringMatching/assets/147913714/600d530c-c362-47a4-b193-e03a2b02e0df)
+
 
 
 So the Overall average CPU usage for the C# implementation of Boyer Moore is roughly **2.10%**
