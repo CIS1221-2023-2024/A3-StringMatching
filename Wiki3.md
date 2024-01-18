@@ -303,7 +303,7 @@ And Thus, we will be recording the Average CPU Usage **Three** Times on the C# p
 
 
 
-So the Overall average CPU usage for the C# implementation of Boyer Moore is roughly **2.10%**
+So the Overall average CPU usage for the C# implementation of Boyer Moore is roughly **0.63%**
 
 
 ## Python
@@ -332,6 +332,7 @@ Therefore, overall average CPU usage for the Python implementation of Boyer Moor
 
 
 
-
+## Conclusion
+There really isn't that much of a difference in CPU usage between Python and C# when it came to the Boyer Moore algorithm. Thus both languages seem to play equally when given this algorithm as a task, CPU-Wise. These statistics of course, can vary depending on how powerful the system you are utilziing both languages on.
 
 
